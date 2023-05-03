@@ -6,10 +6,10 @@ It contains the codes and the process that was carried out in the practice perfo
 - conda
 
 ## Install / Setup
-#### Conda Install
+### Conda Install
 For installing conda [here is the guide](https://conda.io/projects/conda/en/stable/user-guide/install/linux.html). 
 
-#### Environment
+### Environment
 ```
 https://github.com/Opeiz/DataChallenge2023_Stage_IMT.git
 ```

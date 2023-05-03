@@ -1,7 +1,7 @@
 # @package _global_
 
 paths:
-    natl_gf_5nads: data/natl_gf_w_5nadirs.nc
+    natl_gf_5nads: data/natl_gf__5nadirs.nc
     # enatl_gf_5nads: ../sla-data-registry/qdata/enatl_wo_tide.nc
 
 domain: ???
@@ -11,13 +11,13 @@ trainer:
   inference_mode: False
   gradient_clip_val: 0.5
   accelerator: gpu
-  devices: 3
+  devices: 1
   logger: 
     _target_: pytorch_lightning.loggers.CSVLogger
     save_dir: ${hydra:runtime.output_dir}
     name: ${hydra:runtime.choices.xp}
     version: ''
-  max_epochs: 5
+  max_epochs: 150
   callbacks:
     - _target_: src.versioning_cb.VersioningCallback
     - _target_: pytorch_lightning.callbacks.LearningRateMonitor
@@ -42,8 +42,8 @@ datamodule:
     patch_dims: { time: 15, lat: 240, lon: 240}
     strides: { time: 1, lat: 200, lon: 200}
     domain_limits: ${domain.train}
-  dl_kw: {batch_size: 8, num_workers: 64}
-  aug_factor: 5
+  dl_kw: {batch_size: 4, num_workers: 1}
+  aug_factor: 2
   aug_only: True
 
 model:
@@ -67,9 +67,9 @@ model:
       dim_in: ${datamodule.xrds_kw.patch_dims.time}
       dim_hidden: 32
       downsamp: 2
-      # activation: 
-      #   _target_: torch.nn.functional.relu
-      #   _partial_: true
+      activation: 
+        _target_: torch.nn.functional.relu
+        _partial_: true
     obs_cost: 
       _target_: src.models.BaseObsCost
     grad_mod: 

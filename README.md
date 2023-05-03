@@ -34,7 +34,7 @@ python main.py xp=base
 ```
 Important to mention, as hydra is configured, the output of the above command will look like this
 ```
-outputs/YYYY-MM-DD/HH-MM-SS/...
+outputs/YYYY-MM-DD/HH-MM-SS/base/...
 ```
 There you will find the .ckpt file containing the best values obtained in the training phase.
 

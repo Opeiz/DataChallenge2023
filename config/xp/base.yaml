@@ -1,7 +1,7 @@
 # @package _global_
 
 paths:
-    natl_gf_5nads: data/natl_gf__5nadirs.nc
+    natl_gf_5nads: data/natl_gf_w_5nadirs.nc
     # enatl_gf_5nads: ../sla-data-registry/qdata/enatl_wo_tide.nc
 
 domain: ???

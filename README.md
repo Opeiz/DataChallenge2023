@@ -14,9 +14,11 @@ For installing conda [here is the guide](https://conda.io/projects/conda/en/stab
 https://github.com/Opeiz/DataChallenge2023_Stage_IMT.git
 cd DataChallenge2023_Stage_IMT
 conda install -c conda-forge mamba
-conda create -n challenge #You can put the name you want for your environment
-conda activate chall
+conda create -n challenge **#You can put the name you want for your environment**
+conda activate challenge
 mamba env update -f environment.yaml
+conda deactivate
+conda activate challenge
 ```
 
 ### Download Example Data

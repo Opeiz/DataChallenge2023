@@ -24,3 +24,17 @@ mamba env update -f environment.yaml
 mkdir data
 wget https://s3.eu-central-1.wasabisys.com/sla-data-registry/6d/206c6be2dfe0edf1a53c29029ed239 -O data/natl_gf_w_5nadirs.nc
 ```
+
+## Training
+The following command will be used to train the model
+```
+python main.py xp=base
+```
+Important to mention, as hydra is configured, the output of the above command will look like this
+```
+outputs/YYYY-MM-DD/HH-MM-SS/...
+```
+There you will find the .ckpt file containing the best values obtained in the training phase.
+
+
+## Testing

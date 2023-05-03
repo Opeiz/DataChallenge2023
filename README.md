@@ -15,4 +15,5 @@ https://github.com/Opeiz/DataChallenge2023_Stage_IMT.git
 cd DataChallenge2023_Stage_IMT
 conda install -c conda-forge mamba
 conda create -n challenge #You can put the name you want for your environment
+conda activate chall
 ```

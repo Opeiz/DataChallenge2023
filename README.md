@@ -16,4 +16,11 @@ cd DataChallenge2023_Stage_IMT
 conda install -c conda-forge mamba
 conda create -n challenge #You can put the name you want for your environment
 conda activate chall
+mamba env update -f environment.yaml
+```
+
+### Download Example Data
+```
+mkdir data
+wget https://s3.eu-central-1.wasabisys.com/sla-data-registry/6d/206c6be2dfe0edf1a53c29029ed239 -O data/natl_gf_w_5nadirs.nc
 ```

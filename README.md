@@ -64,13 +64,17 @@ Now to establish a basis for comparison and that we are working in the same way 
 |Who|domain|lt   |lx   |LON           |LAT          |mu     |
 |:--------|:------:|-----|-----|--------------:|-------------:|-------|
 |Bacca| gf	|8.482	|1.218	|[-65 , -55]	|[33 , 43]	|0.93685|
+| Opazo    | gf       | 8.902 | 1.201 | [-65 , -55]    | [33 , 43]     | 0.9318 |
+
 
 ### Using Hardswish
 |Who|domain|lt   |lx   |LON           |LAT          |mu     |
 |:--------|:------:|-----|-----|--------------:|-------------:|-------|
 | DataChall    | gf       | 8.331 | 1.19  | [-65 , -55]    | [33 , 43]     | 0.93705 |
 
-### Using
+### Using Sigmoid
+
+### Using 
 
 
 ## Useful links:

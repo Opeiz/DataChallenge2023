@@ -44,7 +44,13 @@ python main.py xp=base +params=bigger_model
 ```
 
 ## Testing
+Now for the testing, the following command will be used
+```
+python main.py xp=domains_metrics_osse xpd='outputs/YYYY-MM-DD/HH-MM-SS' ckpt='outputs/YYYY-MM-DD/HH-MM-SS/base/checkpoints/val_rmse=...'
+```
+For the ckpt parameter select the one of all the outputs in the folder.
 
+## Results
 
 
 

@@ -51,6 +51,14 @@ python main.py xp=domains_metrics_osse xpd='outputs/YYYY-MM-DD/HH-MM-SS' ckpt='o
 For the ckpt parameter select the one of all the outputs in the folder.
 
 ## Results
+The difference with the other git is that this version has the `act.yaml` file, which allows you to change the activation layer through the command line, as follows
+
+```
+python main.py xp=base +params=act acti=tanh # Here you choose the new layer
+```
+
+
+
 ### Using Relu
 Now to establish a basis for comparison and that we are working in the same way with Ala, we performed in 3 ways in parallel a quick learning of the model using Relu, and the results were as follows
 

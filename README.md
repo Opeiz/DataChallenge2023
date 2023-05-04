@@ -51,7 +51,8 @@ python main.py xp=domains_metrics_osse xpd='outputs/YYYY-MM-DD/HH-MM-SS' ckpt='o
 For the ckpt parameter select the one of all the outputs in the folder.
 
 ## Results
-
+### Using Relu
+[Table](results/DataChall-Relu.md)
 
 
 

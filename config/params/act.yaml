@@ -5,7 +5,8 @@ acti: relu
 model:
   solver: 
     prior_cost:
-      activation: torch.nn.functional.${acti}
+      activation: 
+        _target_: torch.nn.functional.${acti}
 
 defaults:
   - _self_

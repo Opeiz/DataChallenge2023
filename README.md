@@ -52,7 +52,13 @@ For the ckpt parameter select the one of all the outputs in the folder.
 
 ## Results
 ### Using Relu
-[Table](results/DataChall-Relu.md)
+Now to establish a basis for comparison and that we are working in the same way with Ala, we performed in 3 ways in parallel a quick learning of the model using Relu, and the results were as follows
+
+|Who|domain|lt   |lx   |LON           |LAT          |mu     |
+|:--------|:------:|-----|-----|--------------:|-------------:|-------|
+|rec_ssh |gf    |8.819|1.189|[-65 , -55]   |[33 , 43]    |0.93774|
+|rec_ssh |gf    |9.033|1.211|[-65 , -55]   |[33 , 43]    |0.93463|
+|rec_ssh |gf    |9.288|1.194|[-65 | -55]   |[33 | 43]    |0.93668|
 
 
 

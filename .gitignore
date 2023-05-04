@@ -1,6 +1,7 @@
 **/__pycache__
 outputs
 logs
+results
 multirun
 **/*.ipynb
 scratches

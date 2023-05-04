@@ -1,11 +1,11 @@
 # @package _global_
 
-act: relu
+acti: relu
 
 model:
   solver: 
     prior_cost:
-      activation: torch.nn.functional.${act}
+      activation: torch.nn.functional.${acti}
 
 defaults:
   - _self_

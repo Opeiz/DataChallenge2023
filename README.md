@@ -84,9 +84,13 @@ Now to establish a basis for comparison and that we are working in the same way 
 |Who|domain|lt   |lx   |LON           |LAT          |mu     |
 |:--------|:------:|-----|-----|--------------:|-------------:|-------|
 | DataChall    | gf       | 9.59  | 1.201 | [-65 , -55]    | [33 , 43]     | 0.92841 |
+|Bacca-Xavier	|gf|	10.729|	1.234|	[-65 , -55]|	[33 , 43]	|0.92744|
 
 
-### Using 
+### Using Tanh
+|Who|domain|lt   |lx   |LON           |LAT          |mu     |
+|:--------|:------:|-----|-----|--------------:|-------------:|-------|
+|Bacca-Xavier|	gf|	7.997	|1.192|	[-65 , -55]|	[33 , 43]	|0.93846|
 
 
 ## Useful links:

@@ -83,7 +83,7 @@ Now to establish a basis for comparison and that we are working in the same way 
 ### Using Sigmoid
 |Who|domain|lt   |lx   |LON           |LAT          |mu     |
 |:--------|:------:|-----|-----|--------------:|-------------:|-------|
-| DataChall    | gf       | 9.59  | 1.201 | [-65 | -55]    | [33 | 43]     | 0.92841 |
+| DataChall    | gf       | 9.59  | 1.201 | [-65 , -55]    | [33 , 43]     | 0.92841 |
 
 
 ### Using 

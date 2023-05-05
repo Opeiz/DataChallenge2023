@@ -81,6 +81,10 @@ Now to establish a basis for comparison and that we are working in the same way 
 | DataChall    | gf       | 8.331 | 1.19  | [-65 , -55]    | [33 , 43]     | 0.93705 |
 
 ### Using Sigmoid
+|Who|domain|lt   |lx   |LON           |LAT          |mu     |
+|:--------|:------:|-----|-----|--------------:|-------------:|-------|
+| DataChall    | gf       | 9.59  | 1.201 | [-65 | -55]    | [33 | 43]     | 0.92841 |
+
 
 ### Using 
 

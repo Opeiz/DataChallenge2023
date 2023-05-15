@@ -99,7 +99,7 @@ def multi_domain_osse_metrics(tdat, test_domains, test_periods):
                     [
                         {
                             "domain": d,
-                            #"period": p,
+                            "period": p,
                             "variable": "rec_ssh",
                             "lt": lt,
                             "lx": lx,

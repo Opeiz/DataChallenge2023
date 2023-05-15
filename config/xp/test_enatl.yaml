@@ -9,7 +9,7 @@ xp_overrides:
       _target_: src.utils.load_enatl
     domains:
       train:
-        time: {_target_: builtins.slice , _args_: ['2010-02-24', '2010-07-3']}
+        time: {_target_: builtins.slice , _args_: ['2010-02-24', '2010-07-31']}
       val: 
         time: {_target_: builtins.slice, _args_: ['2009-12-15', '2010-02-24']}
       test: 

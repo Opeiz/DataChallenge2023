@@ -15,7 +15,7 @@ xp_overrides:
       test: 
         time: {_target_: builtins.slice,  _args_: ['2009-07-01', '2010-07-31']}
     xrds_kw: 
-      strides: {lat: 200, lon: 200}
+      strides: {lat: 100, lon: 100}
       domain_limits: ${domain.train}
     dl_kw: {batch_size: 4, num_workers: 64}
 
@@ -24,7 +24,7 @@ trainer:
   _target_: pytorch_lightning.Trainer
   inference_mode: False
   accelerator: gpu
-  devices: 1
+  devices: 3
   logger: False
 
 lit_mod: 
@@ -45,11 +45,6 @@ ckpt:
 
 test_domains: ???
 
-# test_periods: [ ["2009-07-01", "2010-07-31"],
-#                 ["2009-07-01", "2009-08-31"],
-#                 ["2009-10-01", "2009-11-30"],
-#                 ["2010-01-01", "2010-02-28"],
-#                 ["2010-04-01", "2010-05-31"]]
 test_periods: 
                 { "Year":["2009-07-01", "2010-07-31"],
                 "July-August":["2009-07-01", "2009-08-31"],
@@ -77,17 +72,17 @@ entrypoints:
     test_domains: ${test_domains}
     test_periods: ${test_periods}
     save_dir: ${hydra:runtime.output_dir}
-  # - _target_: contrib.multi_domain_diag.multi_domain_osse_metrics
-  #   tdat: {_target_: contrib.multi_domain_diag.load_oi_4nadirs}
-  #   test_domains: ${test_domains}
-  #   test_periods: ${test_periods}
+  - _target_: contrib.multi_domain_diag.multi_domain_osse_metrics
+    tdat: {_target_: contrib.multi_domain_diag.load_oi_4nadirs}
+    test_domains: ${test_domains}
+    test_periods: ${test_periods}
 
 defaults:
   - /domain: qnatl
   - /domain@test_domains.qnatl: qnatl
-  # - /domain@test_domains.cNATL: cNATL
-  # - /domain@test_domains.4gf: 4gf
-  # - /domain@test_domains.2gf: 2gf
+  - /domain@test_domains.cNATL: cNATL
+  - /domain@test_domains.4gf: 4gf
+  - /domain@test_domains.2gf: 2gf
   - /domain@test_domains.gf: gf
   - /domain@test_domains.canaries: canaries
   - /domain@test_domains.osmosis: osmosis

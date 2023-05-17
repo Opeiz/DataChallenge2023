@@ -72,8 +72,8 @@ def multi_domain_osse_diag(
 
     metrics_df = multi_domain_osse_metrics(tdat, test_domains, test_periods)
 
-    print("==== Metrics ====")
-    print(metrics_df.to_markdown())
+    # print("==== Metrics ====")
+    # print(metrics_df.to_markdown())
     metrics_df.to_csv(save_dir / "multi_domain_metrics.csv")
 
 
@@ -112,8 +112,11 @@ def multi_domain_osse_metrics(tdat, test_domains, test_periods):
                 .join(round(leaderboard_rmse.to_array().to_dataframe(name="mu"),5))
             )
             metrics.append(mdf)    
-        # print(mdf.to_markdown())
-
+    
+    print("==== Metrics ====")
+    print(mdf.to_markdown())
+    metrics_df.to_csv("Miost.csv")
+    
     metrics_df = pd.concat(metrics).sort_values(by='mu')
     return metrics_df
 
@@ -135,9 +138,18 @@ def load_oi_swot():
     return exit
 
 def load_oi_swot_4nadirs():
+
     oi = xr.open_dataset('../sla-data-registry/NATL60/NATL/oi/ssh_NATL60_swot_4nadir.nc')
     ssh = xr.open_dataset('../sla-data-registry/NATL60/NATL/ref_new/NATL60-CJM165_NATL_ssh_y2013.1y.nc')
     ssh['time'] = pd.to_datetime('2012-10-01') + pd.to_timedelta(ssh.time, 's') 
     
     exit = ssh.assign(rec_ssh=oi.ssh_mod.interp(time=ssh.time, lat=ssh.lat, lon=ssh.lon, method='nearest').where(lambda ds: np.abs(ds) < 10, np.nan))
     return exit
+
+def load_miost():
+    miost = xr.open_dataset('../sla-data-registry/enatl_preproc/miost_nadirs.nc')
+    ssh =  xr.open_zarr('../sla-data-registry/enatl_preproc/truth_SLA_SSH_NATL60.zarr').load()
+    miost = miost.rename({"latitude":'lat',"longitude":'lon'})
+    
+    tdat = ssh.assign(rec_ssh=miost.ssh.interp(time=ssh.time, lat=ssh.lat, lon=ssh.lon, method='nearest').where(lambda ds: np.abs(ds) < 10, np.nan))
+    return tdat

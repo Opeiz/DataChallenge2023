@@ -320,13 +320,14 @@ def geo_energy(da):
 
 def best_ckpt(xp_dir):
     ckpt_files = list((Path(xp_dir) / "checkpoints").glob("*.ckpt"))
+    print('===== TEST =====')
+    ckpt_files
 
     ckpt_last = max(ckpt_files, key=lambda p: p.stat().st_mtime)
     cbs = torch.load(ckpt_last)["callbacks"]
     
     ckpt_cb_key = next(k for k in cbs.keys() if "ModelCheckpoint" in k)
     ckpt_cb = cbs[ckpt_cb_key]
-    print(ckpt_cb['best_model_path'])
     
     return ckpt_cb["best_model_path"]
 

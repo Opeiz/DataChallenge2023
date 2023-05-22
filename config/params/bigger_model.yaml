@@ -13,5 +13,3 @@ model:
       dim_hidden: 64
     grad_mod:
       dim_hidden: 96
-
-

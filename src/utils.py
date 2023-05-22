@@ -310,12 +310,26 @@ def geo_energy(da):
     return np.hypot(*mpcalc.geostrophic_wind(da.pipe(add_geo_attrs))).metpy.dequantify()
 
 
+# def best_ckpt(xp_dir):
+#     ckpt_last = max(
+#         (Path(xp_dir) / "checkpoints").glob("*.ckpt"), key=lambda p: p.stat().st_mtime
+#     )
+#     cbs = torch.load(ckpt_last)["callbacks"]
+#     ckpt_cb = cbs[next(k for k in cbs.keys() if "ModelCheckpoint" in k)]
+#     return ckpt_cb["best_model_path"]
+
 def best_ckpt(xp_dir):
-    ckpt_last = max(
-        (Path(xp_dir) / "checkpoints").glob("*.ckpt"), key=lambda p: p.stat().st_mtime
-    )
+    ckpt_files = list((Path(xp_dir) / "checkpoints").glob("*.ckpt"))
+    
+    if not ckpt_files:
+        raise ValueError("No checkpoint files found.")
+    
+    ckpt_last = max(ckpt_files, key=lambda p: p.stat().st_mtime)
     cbs = torch.load(ckpt_last)["callbacks"]
-    ckpt_cb = cbs[next(k for k in cbs.keys() if "ModelCheckpoint" in k)]
+    
+    ckpt_cb_key = next(k for k in cbs.keys() if "ModelCheckpoint" in k)
+    ckpt_cb = cbs[ckpt_cb_key]
+    
     return ckpt_cb["best_model_path"]
 
 

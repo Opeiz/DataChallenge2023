@@ -93,6 +93,11 @@ Now to establish a basis for comparison and that we are working in the same way 
 |Bacca-Xavier|	gf|	7.997	|1.192|	[-65 , -55]|	[33 , 43]	|0.93846|
 
 
+
+### Data Visualization
+For comparing the 2 methods to the satellite images interpolation, 4DVarNet and Miost, in the folder notebooks are the .csv with the values of the results and the jupyter notebooks with the data science process.
+
+
 ## Useful links:
 - [Hydra documentation](https://hydra.cc/docs/intro/)
 - [Pytorch lightning documentation](https://pytorch-lightning.readthedocs.io/en/stable/index.html#get-started)

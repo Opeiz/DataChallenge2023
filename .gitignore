@@ -3,8 +3,9 @@ outputs
 logs
 results
 multirun
-**/*.ipynb
+# **/*.ipynb
 scratches
 tmp
 data
 jobs
+*.log

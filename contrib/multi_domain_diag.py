@@ -72,8 +72,8 @@ def multi_domain_osse_diag(
 
     metrics_df = multi_domain_osse_metrics(tdat, test_domains, test_periods)
 
-    # print("==== Metrics ====")
-    # print(metrics_df.to_markdown())
+    print("==== Metrics ====")
+    print(metrics_df.to_markdown())
     metrics_df.to_csv(save_dir / "multi_domain_metrics.csv")
 
 
@@ -103,8 +103,8 @@ def multi_domain_osse_metrics(tdat, test_domains, test_periods):
                             "variable": "rec_ssh",
                             "lt": lt,
                             "lx": lx,
-                            # "LON": "[" + str((test_domains[d].test["lon"]).start) + " | " + str((test_domains[d].test["lon"]).stop) + "]",
-                            # "LAT": "[" + str((test_domains[d].test["lat"]).start) + " | " + str((test_domains[d].test["lat"]).stop) + "]",
+                            "LON": "[" + str((test_domains[d].test["lon"]).start) + " | " + str((test_domains[d].test["lon"]).stop) + "]",
+                            "LAT": "[" + str((test_domains[d].test["lat"]).start) + " | " + str((test_domains[d].test["lat"]).stop) + "]",
                         },
                     ]
                 )
@@ -113,9 +113,9 @@ def multi_domain_osse_metrics(tdat, test_domains, test_periods):
             )
             metrics.append(mdf)    
     
-    print("==== Metrics ====")
-    print(mdf.to_markdown())
-    metrics_df.to_csv("Miost.csv")
+    # print("==== Metrics ====")
+    # print(mdf.to_markdown())
+    # metrics_df.to_csv("Miost.csv")
     
     metrics_df = pd.concat(metrics).sort_values(by='mu')
     return metrics_df

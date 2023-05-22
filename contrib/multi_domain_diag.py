@@ -51,7 +51,8 @@ def multi_domain_osse_diag(
     save_dir=None,
     src_dm=None,
 ):
-    ckpt = torch.load(ckpt_path)["state_dict"]
+    # ckpt = torch.load(ckpt_path)["state_dict"]
+    ckpt = torch.load(ckpt_path)
     print('==== CHECK ====')
     print(ckpt)
     lit_mod.load_state_dict(ckpt)

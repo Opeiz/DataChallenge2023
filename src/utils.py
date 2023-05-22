@@ -326,7 +326,7 @@ def best_ckpt(xp_dir):
     
     ckpt_cb_key = next(k for k in cbs.keys() if "ModelCheckpoint" in k)
     ckpt_cb = cbs[ckpt_cb_key]
-    print(ckpt_cb)
+    print(ckpt_cb['best_model_path'])
     
     return ckpt_cb["best_model_path"]
 

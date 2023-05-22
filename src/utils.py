@@ -329,7 +329,8 @@ def best_ckpt(xp_dir):
     ckpt_cb_key = next(k for k in cbs.keys() if "ModelCheckpoint" in k)
     ckpt_cb = cbs[ckpt_cb_key]
     
-    return ckpt_cb["best_model_path"]
+    # return ckpt_cb["best_model_path"]
+    return ckpt_last
 
 
 def load_cfg(xp_dir):

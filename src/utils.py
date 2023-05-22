@@ -321,9 +321,6 @@ def geo_energy(da):
 def best_ckpt(xp_dir):
     ckpt_files = list((Path(xp_dir) / "checkpoints").glob("*.ckpt"))
     
-    if not ckpt_files:
-        raise ValueError("No checkpoint files found.")
-    
     ckpt_last = max(ckpt_files, key=lambda p: p.stat().st_mtime)
     cbs = torch.load(ckpt_last)["callbacks"]
     

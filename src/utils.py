@@ -322,8 +322,8 @@ def best_ckpt(xp_dir):
     ckpt_files = list((Path(xp_dir) / "checkpoints").glob("*.ckpt"))
 
     ckpt_last = max(ckpt_files, key=lambda p: p.stat().st_mtime)
-    print('===== TEST =====')
-    print(ckpt_last)
+    # print('===== TEST =====')
+    # print(ckpt_last)
     cbs = torch.load(ckpt_last)["callbacks"]
     
     ckpt_cb_key = next(k for k in cbs.keys() if "ModelCheckpoint" in k)

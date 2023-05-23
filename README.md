@@ -109,6 +109,7 @@ Now to establish a basis for comparison and that we are working in the same way 
 ### Data Visualization
 For comparing the 2 methods to the satellite images interpolation, 4DVarNet and Miost, in the folder notebooks are the .csv with the values of the results and the jupyter notebooks with the data science process.
 
+[Link to Visualization Readme.md](/notebooks/README.md)
 
 ## Useful links:
 - [Hydra documentation](https://hydra.cc/docs/intro/)

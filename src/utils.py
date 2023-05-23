@@ -320,10 +320,9 @@ def best_ckpt(xp_dir):
     ckpt_cb_key = next(k for k in cbs.keys() if "ModelCheckpoint" in k)
     ckpt_cb = cbs[ckpt_cb_key]
     
-    print('===== TEST =====')
     new_path = os.path.join(Path(xp_dir),'checkpoints',str(ckpt_cb["best_model_path"].split('/')[-1]))
-    print(new_path)
     # return ckpt_cb["best_model_path"]
+    return new_path
 
 
 def load_cfg(xp_dir):

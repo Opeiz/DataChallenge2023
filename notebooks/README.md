@@ -1,8 +1,8 @@
-## Results 
+# Results 
 Here we can find the two .csv files with the results of the methods to compare, as well as the jupyter file with the data processing and visualization. 
 Also, there is the folder images with the graphs comparing the obtained results.
 
-### By Season
+## By Season
 
 ![January-February](/notebooks/images/January-February.png)
 
@@ -14,7 +14,7 @@ Also, there is the folder images with the graphs comparing the obtained results.
 
 ![Year](/notebooks/images/Year.png)
 
-### By Domain
+## By Domain
 
 ![gf](/notebooks/images/gf.png)
 

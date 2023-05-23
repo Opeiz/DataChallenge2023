@@ -320,8 +320,8 @@ def best_ckpt(xp_dir):
     ckpt_cb = cbs[ckpt_cb_key]
     
     print('===== TEST =====')
-    print(ckpt_cb["best_model_path"].split('/')[-2:])
-    new_path = Path(xp_dir) + ckpt_cb["best_model_path"].split('/')[-2:]
+    print(ckpt_cb["best_model_path"].split('/')[-1:])
+    new_path = Path(xp_dir)+'/' + 'checkpoints'+ '/' +str(ckpt_cb["best_model_path"].split('/')[-1:])
     print(new_path)
     # return ckpt_cb["best_model_path"]
 

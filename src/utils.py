@@ -14,6 +14,7 @@ import pyinterp.backends.xarray
 import src.data
 import xarray as xr
 import matplotlib.pyplot as plt
+import os
 
 
 def half_lr_adam(lit_mod, lr):
@@ -321,7 +322,7 @@ def best_ckpt(xp_dir):
     
     print('===== TEST =====')
     print(ckpt_cb["best_model_path"].split('/')[-1:])
-    new_path = Path(xp_dir)+'/' + 'checkpoints'+ '/' +str(ckpt_cb["best_model_path"].split('/')[-1:])
+    new_path = os.path.join(Path(xp_dir),'checkpoints',ckpt_cb["best_model_path"].split('/')[-1:])
     print(new_path)
     # return ckpt_cb["best_model_path"]
 

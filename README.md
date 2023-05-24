@@ -21,11 +21,22 @@ The dates of the totality of the information provided is between 01-07-2009 and 
 
 ## Leaderboard by Season
 ### January-February ("2010-01-01", "2010-02-28")
+|Method|mu|lt|lx|
+|:----:|:-:|:--:|:--:|
+|4DVarNet|123|123|123|
+|Miost|123|123|123|
 
 ### April-May ("2010-04-01", "2010-05-31")
+|Method|mu|lt|lx|
+|:----:|:-:|:--:|:--:|
+|4DVarNet||||
+|Miost||||
 
 ### Octobre-Novembre ("2009-10-01", "2009-11-30")
-
+|Method|mu|lt|lx|
+|:----:|:-:|:--:|:--:|
+|4DVarNet||||
+|Miost||||
 
 ## Leaderboard for the whole year
-### Year ("")
+### Year (""2010-01-01", "2010-07-31"")

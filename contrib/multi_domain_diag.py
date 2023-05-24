@@ -114,7 +114,7 @@ def multi_domain_osse_metrics(tdat, test_domains, test_periods):
             metrics.append(mdf)    
     
     print("==== Metrics ====")
-    print(mdf.to_markdown())
+    print(metrics.to_markdown())
     metrics_df.to_csv("Miost.csv")
     
     metrics_df = pd.concat(metrics).sort_values(by='mu')

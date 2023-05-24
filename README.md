@@ -11,10 +11,21 @@ For this purpose, satellite observations were used to train the model and then t
 
 ### Data sequence
 
+The dates of the totality of the information provided is between 01-07-2009 and 31-07-2010. So it was divided as follows for the models:
+ 
+- Spin-up: 01-07-2009 to 31-07-2009
+- Evaluation: 01-08-2009 to 01-10-2009
+- Training: 01-01-2010 to 31-07-2010
+
 **Add image**
 
 ## Leaderboard by Season
-**add table**
+### January-February ("2010-01-01", "2010-02-28")
+
+### April-May ("2010-04-01", "2010-05-31")
+
+### Octobre-Novembre ("2009-10-01", "2009-11-30")
+
 
 ## Leaderboard for the whole year
-**add table**
+### Year ("")

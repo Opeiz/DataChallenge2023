@@ -21,34 +21,30 @@ The dates of the totality of the information provided is between 01-07-2009 and 
 
 ## Leaderboard by Season
 ### January-February ("2010-01-01", "2010-02-28")
-|Method|domain|mu|lt|lx|
+|Method|domain|lt|lx|mu|
 |:----:|:--:|:-:|:--:|:--:|
-|4DVarNet|gf|123|123|123|
-|Miost|gf|123|123|123|
+|4DVarNet|gf|13.302|1.361|0.86964|
+|Miost|gf|11.701|1.158|0.90162|
 
 ### April-May ("2010-04-01", "2010-05-31")
-|Method|domain|mu|lt|lx|
+|Method|domain|lt|lx|mu|
 |:----:|:--:|:-:|:--:|:--:|
-|4DVarNet|gf|123|123|123|
-|Miost|gf|123|123|123|
+|4DVarNet|gf|11.382|1.497 |0.86859|
+|Miost|gf|10.21|1.435|0.89097|
 
 ### Octobre-Novembre ("2009-10-01", "2009-11-30")
-|Method|domain|mu|lt|lx|
+|Method|domain|lt|lx|mu|
 |:----:|:--:|:-:|:--:|:--:|
-|4DVarNet|gf|123|123|123|
-|Miost|gf|123|123|123|
+|4DVarNet|gf|11.168|1.655|0.8232|
+|Miost|gf|10.035|1.655|0.90484|
 
 ## Leaderboard for the whole year
 ### Year (""2010-01-01", "2010-07-31"")
 |Method|domain|mu|lt|lx|
 |:----:|:--:|:-:|:--:|:--:|
-|4DVarNet|gf	|123|123|123|
-|Miost|gf		|123|123|123|
-|4DVarNet|canaries	|123|123|123|
-|Miost|canaries		|123|123|123|
-|4DVarNet|osmosis	|123|123|123|
-|Miost|osmosis		|123|123|123|
-|4DVarNet|NATL	|123|123|123|
-|Miost|NATL		|123|123|123|
-|4DVarNet|eNATL	|123|123|123|
-|Miost|eNATL		|123|123|123|
+|4DVarNet|gf	|13.414|1.202|0.83549|
+|Miost|gf		|11.247|1.109|0.89896|
+|4DVarNet|canaries	|20.759|0.101|0.94521|
+|Miost|canaries		|25.314|0.252|0.95286|
+|4DVarNet|osmosis	|14.396|1.037|0.96333|
+|Miost|osmosis		|21.214|1.243|0.96494|

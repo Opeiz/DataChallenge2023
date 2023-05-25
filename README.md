@@ -40,7 +40,7 @@ The dates of the totality of the information provided is between 01-07-2009 and 
 
 ## Leaderboard for the whole year
 ### Year (""2010-01-01", "2010-07-31"")
-|Method|domain|mu|lt|lx|
+|Method|domain|lt|lx|mu|
 |:----:|:--:|:-:|:--:|:--:|
 |4DVarNet|gf	|14.327|1.204|0.85932|
 |Miost|gf		|11.247|1.109|0.89896|
@@ -48,3 +48,5 @@ The dates of the totality of the information provided is between 01-07-2009 and 
 |Miost|canaries		|25.314|0.252|0.95286|
 |4DVarNet|osmosis	|139.771|1.041|0.96579|
 |Miost|osmosis		|21.214|1.243|0.96494|
+|4DVarNet|NATL	|8.409|0.1|0.93846|
+|Miost|NATL		|2.645|0.25|0.95578|

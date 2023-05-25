@@ -9,6 +9,7 @@ import omegaconf
 from omegaconf import OmegaConf
 import src.utils
 import hydra
+from scipy import ndimage
 
 
 def load_cfg_from_xp(xpd, key, overrides=None, call=True):
@@ -71,27 +72,44 @@ def multi_domain_osse_diag(
     tdat.to_netcdf(save_dir / "multi_domain_tdat.nc")
 
     metrics_df = multi_domain_osse_metrics(tdat, test_domains, test_periods)
-
+    
     print("==== Metrics ====")
     print(metrics_df.to_markdown())
     metrics_df.to_csv(save_dir / "multi_domain_metrics.csv")
-
-
+    
+    
 def multi_domain_osse_metrics(tdat, test_domains, test_periods):
+    LapGrad_rec=[]
     metrics = []
     for d in test_domains:
         for p in test_periods:
             tdom_spat = test_domains[d].test
             test_domain = dict(time=slice(*p), **tdom_spat)
-
+    
             da_rec, da_ref = tdat.sel(test_domain).drop("ssh") ,tdat.sel(test_domain).ssh
-
+            #da_rec, da_ref=da_rec.differentiate("lon"), da_ref.differentiate("lon")
+            
+            coords_ref=da_ref.coords
+            coords_rec=da_rec.coords
+            rec_ssh=da_rec.rec_ssh
+     
+            da_rec=ndimage.laplace(da_rec.rec_ssh)# sobel for grad
+            LapGrad_rec.append(da_rec) #Adding Lap/Grad to list
+            da_rec=xr.DataArray(da_rec, coords=coords_rec)
+            
+            da_ref=ndimage.laplace(da_ref)# sobel for grad
+            da_ref=xr.DataArray(da_ref, coords=coords_ref)
+            
+            
+            
             leaderboard_rmse = (
                 1.0 - (((da_rec - da_ref) ** 2).mean()) ** 0.5 / (((da_ref) ** 2).mean()) ** 0.5
             )
             
+            leaderboard_rmse=leaderboard_rmse.to_dataset(name='rec_ssh')
+    
             psd, lx, lt = src.utils.psd_based_scores(
-                da_rec.rec_ssh.pipe(lambda da: xr.apply_ufunc(np.nan_to_num, da)),
+                da_rec.copy().pipe(lambda da: xr.apply_ufunc(np.nan_to_num, da)),
                 da_ref.copy().pipe(lambda da: xr.apply_ufunc(np.nan_to_num, da)),
             )
             mdf = (
@@ -105,16 +123,17 @@ def multi_domain_osse_metrics(tdat, test_domains, test_periods):
                             "lx": lx,
                             "LON": "[" + str((test_domains[d].test["lon"]).start) + " | " + str((test_domains[d].test["lon"]).stop) + "]",
                             "LAT": "[" + str((test_domains[d].test["lat"]).start) + " | " + str((test_domains[d].test["lat"]).stop) + "]",
-
+    
                         },
                     ]
                 )
                 .set_index("variable")
                 .join(round(leaderboard_rmse.to_array().to_dataframe(name="mu"),5))
-            )
+            )                
             metrics.append(mdf)    
         # print(mdf.to_markdown())
-
+    print(type(LapGrad_rec[0][0]))
+    np.savetxt('LapGrad.txt', LapGrad_rec[0][0]) #Saving Lap/Grad in text file
     metrics_df = pd.concat(metrics).sort_values(by='mu')
     return metrics_df
 

@@ -6,7 +6,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 import xarray as xr
 import einops
-
+import math
 
 class Lit4dVarNet(pl.LightningModule):
     def __init__(self, solver, rec_weight, opt_fn, norm_stats=None):
@@ -201,10 +201,18 @@ class BaseObsCost(nn.Module):
 class BilinAEPriorCost(nn.Module):
     def __init__(self, dim_in, dim_hidden, activation=F.relu, kernel_size=3, downsamp=None):
         super().__init__()
-        self.activation = activation
+        self.w0=30
+        self.activation=activation
+        #self.activation = lambda x:torch.sin(self.w0*x)
         self.conv_in = nn.Conv2d(
             dim_in, dim_hidden, kernel_size=kernel_size, padding=kernel_size // 2
         )
+        c=6
+        w_std = math.sqrt(c / dim_hidden)/self.w0
+        #torch.nn.init.xavier_uniform(self.conv_in.weight)
+
+        #torch.nn.init.uniform_(self.conv_in.weight,-w_std, w_std)
+
         self.conv_hidden = nn.Conv2d(
             dim_hidden, dim_hidden, kernel_size=kernel_size, padding=kernel_size // 2
         )

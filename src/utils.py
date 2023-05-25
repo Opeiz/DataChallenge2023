@@ -15,6 +15,10 @@ import src.data
 import xarray as xr
 import matplotlib.pyplot as plt
 
+def sinF(self, x,w0=1):
+    return torch.sin(self.w0 * x)
+
+
 
 def half_lr_adam(lit_mod, lr):
     return torch.optim.Adam(

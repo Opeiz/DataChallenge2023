@@ -12,13 +12,17 @@ import hydra
 
 
 def load_cfg_from_xp(xpd, key, overrides=None, call=True):
+    
     xpd = Path(xpd)
     src_cfg, xp = src.utils.load_cfg(xpd / ".hydra")
     overrides = overrides or dict()
+    
     OmegaConf.set_struct(src_cfg, True)
+    
     with omegaconf.open_dict(src_cfg):
         cfg = OmegaConf.merge(src_cfg, overrides)
     node = OmegaConf.select(cfg, key)
+    
     return hydra.utils.call(node) if call else node
 
 

@@ -120,7 +120,8 @@ class XrDataset(torch.utils.data.Dataset):
         takes as input a list of np.ndarray of dimensions (b, *, *patch_dims)
         return a stitched xarray.DataArray with the coords of patch_dims
 
-    batches: list of torch tensor correspondin to batches without shuffle
+        
+        batches: list of torch tensor correspondin to batches without shuffle
         weight: tensor of size patch_dims corresponding to the weight of a prediction depending on the position on the patch (default to ones everywhere)
         overlapping patches will be averaged with weighting 
         """

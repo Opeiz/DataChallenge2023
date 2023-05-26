@@ -61,6 +61,9 @@ def multi_domain_osse_diag(
     if rec_weight is not None:
         lit_mod.rec_weight = torch.from_numpy(rec_weight)
 
+    print("=== TEST ===")
+    print(dm)
+
     norm_dm = src_dm or dm
     lit_mod.norm_stats = norm_dm.norm_stats()
 

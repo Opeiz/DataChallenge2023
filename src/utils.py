@@ -326,11 +326,14 @@ def best_ckpt(xp_dir):
 
 
 def load_cfg(xp_dir):
+
     hydra_cfg = OmegaConf.load(Path(xp_dir) / "hydra.yaml").hydra
     cfg = OmegaConf.load(Path(xp_dir) / "config.yaml")
+    
     OmegaConf.register_new_resolver(
         "hydra", lambda k: OmegaConf.select(hydra_cfg, k), replace=True
     )
+    
     try:
         OmegaConf.resolve(cfg)
         OmegaConf.resolve(cfg)

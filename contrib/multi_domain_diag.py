@@ -64,8 +64,8 @@ def multi_domain_osse_diag(
     norm_dm = src_dm or dm
     lit_mod.norm_stats = norm_dm.norm_stats()
 
-    print("=== TEST ===")
-    print(lit_mod.norm_stats)
+    # print("=== TEST ===")
+    # print(lit_mod.norm_stats)
 
     trainer.test(lit_mod, datamodule=dm)
     tdat = lit_mod.test_data

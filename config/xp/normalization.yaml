@@ -29,13 +29,19 @@ dm:
   xpd : ${xpd}
   overrides: ${xp_overrides}
 
+
+# src_dm:
+#   _target_: contrib.multi_domain_diag.load_cfg_from_xp
+#   key: datamodule
+#   xpd : ${xpd}
+#   overrides: ${xp_overrides}
+
+
 ckpt:
   _target_: src.utils.best_ckpt
   xp_dir: ${xpd}/base
 
 test_domains: ???
-
-# test_periods: [["2012-10-22", "2012-12-02"]]
 
 test_periods: 
                 { "Year":["2009-07-01", "2010-07-31"],

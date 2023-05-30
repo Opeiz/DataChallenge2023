@@ -34,8 +34,7 @@ dm:
   _target_: contrib.multi_domain_diag.load_cfg_from_xp
   key: datamodule
   xpd : ${xpd}
-  overrides: ${xp_overrides}.xrds_kw.domain_limits
-
+  overrides: ${xp_overrides}
 
 src_dm:
   _target_: contrib.multi_domain_diag.load_cfg_from_xp

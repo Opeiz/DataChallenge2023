@@ -230,6 +230,8 @@ class BaseDataModule(pl.LightningDataModule):
         std_time = np.std(self.input_da,axis=0)
 
         train_data = self.input_da.sel(self.xrds_kw.get('domain_limits', {})).sel(self.domains['train'])
+        print('====== INPUT ========')
+        print(self.input_da)
         print('====== TEST ========')
         print(train_data)
         (mean_batch, std_batch) = train_data.sel(variable='tgt').pipe(lambda da: (da.mean().values.item(), da.std().values.item()))

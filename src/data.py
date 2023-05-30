@@ -229,10 +229,12 @@ class BaseDataModule(pl.LightningDataModule):
         mean_time = np.mean(self.input_da,axis=0)
         std_time = np.std(self.input_da,axis=0)
 
-        # train_data = self.input_da.sel(self.xrds_kw.get('domain_limits', {})).sel(self.domains['train'])
-        # (mean_batch, std_batch) = train_data.sel(variable='tgt').pipe(lambda da: (da.mean().values.item(), da.std().values.item()))
+        train_data = self.input_da.sel(self.xrds_kw.get('domain_limits', {})).sel(self.domains['train'])
+        print('====== TEST ========')
+        print(train_data)
+        (mean_batch, std_batch) = train_data.sel(variable='tgt').pipe(lambda da: (da.mean().values.item(), da.std().values.item()))
         
-        (mean_batch, std_batch) = mean_time,std_time
+        # (mean_batch, std_batch) = mean_time,std_time
         return (mean_batch, std_batch)
 
     def post_fn(self):

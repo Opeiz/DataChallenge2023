@@ -56,5 +56,3 @@ for n, d in domains.items():
         lon=dict(_target_="builtins.slice", _args_=[d["lon"][0] + 1, d["lon"][1] - 1]),
     )
     cs.store(name=n, node={"train": train, "test": test}, group="domain")
-    
-print(cs)

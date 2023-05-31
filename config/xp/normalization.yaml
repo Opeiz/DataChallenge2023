@@ -3,13 +3,6 @@ xpd: ???
 
 domain: ???
 
-xp_overrides_src:
-  datamodule:
-    xrds_kw:
-      strides: {lat: 200, lon: 200}
-      domain_limits: ${domain.train}
-    dl_kw: {batch_size: 2, num_workers: 64}
-
 xp_overrides:
   datamodule:
     input_da: 
@@ -26,6 +19,12 @@ xp_overrides:
       domain_limits: ${domain.train}
     dl_kw: {batch_size: 2, num_workers: 64}
 
+xp_overrides_src:
+  datamodule:
+    xrds_kw:
+      strides: {lat: 200, lon: 200}
+      domain_limits: ${domain.train}
+    dl_kw: {batch_size: 2, num_workers: 64}
 
 trainer: 
   _target_: pytorch_lightning.Trainer
@@ -87,7 +86,7 @@ entrypoints:
     src_dm: ${src_dm}
 
 defaults:
-  - /domain: cNATL
+  - /domain: gf
   # - /domain@test_domains.qnatl: qnatl
   # - /domain@test_domains.cNATL: cNATL
   # - /domain@test_domains.4gf: 4gf

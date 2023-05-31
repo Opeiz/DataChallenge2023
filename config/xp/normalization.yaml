@@ -15,7 +15,7 @@ xp_overrides:
       test: 
         time: {_target_: builtins.slice,  _args_: ['2009-07-01', '2010-07-31']}
     xrds_kw:
-      strides: {lat: 100, lon: 100}
+      strides: {lat: 200, lon: 200}
       domain_limits: ${domain.train}
     dl_kw: {batch_size: 2, num_workers: 64}
 
@@ -31,7 +31,7 @@ xp_overrides_src:
       test: 
         time: {_target_: builtins.slice,  _args_: ['2009-07-01', '2010-07-31']}
     xrds_kw:
-      strides: {lat: 100, lon: 100}
+      strides: {lat: 200, lon: 200}
       domain_limits: ${domain.train}
     dl_kw: {batch_size: 2, num_workers: 64}
 

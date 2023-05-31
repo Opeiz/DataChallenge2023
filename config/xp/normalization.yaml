@@ -60,7 +60,6 @@ src_dm:
   xpd : ${xpd}
   overrides: ${xp_overrides_src}
 
-
 ckpt:
   _target_: src.utils.best_ckpt
   xp_dir: ${xpd}/base
@@ -111,4 +110,3 @@ defaults:
   - /domain@test_domains.eNATL: eNATL
   - /domain@test_domains.NATL: NATL
   - _self_
-

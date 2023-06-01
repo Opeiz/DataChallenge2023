@@ -45,11 +45,11 @@ dm:
   xpd : ${xpd}
   overrides: ${xp_overrides}
 
-# src_dm:
-#   _target_: contrib.multi_domain_diag.load_cfg_from_xp
-#   key: datamodule
-#   xpd : ${xpd}
-#   overrides: ${xp_overrides_src}
+src_dm:
+  _target_: contrib.multi_domain_diag.load_cfg_from_xp
+  key: datamodule
+  xpd : ${xpd}
+  overrides: ${xp_overrides_src}
 
 ckpt:
   _target_: src.utils.best_ckpt
@@ -83,11 +83,11 @@ entrypoints:
     test_domains: ${test_domains}
     test_periods: ${test_periods}
     save_dir: ${hydra:runtime.output_dir}
-    # src_dm: ${src_dm}
+    src_dm: ${src_dm}
 
 defaults:
   - /domain: cNATL                  # training
-  - /domain@src_domain: gf          # For normalize data
+  # - /domain@src_domain: gf          # For normalize data
   - /domain@test_domains.NATL: NATL # Testing
   # - /domain@test_domains.qnatl: qnatl
   # - /domain@test_domains.cNATL: cNATL

@@ -86,10 +86,10 @@ entrypoints:
     src_dm: ${src_dm}
 
 defaults:
-  - /domain: NATL                  # training
-  - /domain@src_domain: NATL          # For normalize data
-  - /domain@test_domains.gf: gf # Testing
-  
+  - /domain: NATL                     # training
+  - /domain@src_domain: eNATL          # For normalize data
+  - /domain@test_domains.gf: gf       # Testing
+
   # - /domain@test_domains.qnatl: qnatl
   # - /domain@test_domains.cNATL: cNATL
   # - /domain@test_domains.4gf: 4gf

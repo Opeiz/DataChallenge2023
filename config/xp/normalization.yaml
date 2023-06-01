@@ -15,14 +15,14 @@ xp_overrides:
       test: 
         time: {_target_: builtins.slice,  _args_: ['2009-07-01', '2010-07-31']}
     xrds_kw:
-      strides: {lat: 100, lon: 100}
+      strides: {lat: 200, lon: 200}
       domain_limits: ${domain.train}
     dl_kw: {batch_size: 2, num_workers: 64}
 
 xp_overrides_src:
   datamodule:
     xrds_kw:
-      strides: {lat: 100, lon: 100}
+      strides: {lat: 200, lon: 200}
       domain_limits: ${src_domain.train}
     dl_kw: {batch_size: 2, num_workers: 64}
 
@@ -86,9 +86,9 @@ entrypoints:
     src_dm: ${src_dm}
 
 defaults:
-  - /domain: cNATL
-  - /domain@src_domain: gf 
-  - /domain@test_domains.NATL: NATL
+  - /domain: cNATL                  # training
+  - /domain@src_domain: gf          # For normalize data
+  - /domain@test_domains.NATL: NATL # Testing
   # - /domain@test_domains.qnatl: qnatl
   # - /domain@test_domains.cNATL: cNATL
   # - /domain@test_domains.4gf: 4gf

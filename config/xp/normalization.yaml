@@ -86,8 +86,8 @@ entrypoints:
     src_dm: ${src_dm}
 
 defaults:
-  - /domain: qnatl                     # training
-  - /domain@src_domain: gf          # For normalize data
+  - /domain: gf          # training
+  - /domain@src_domain: qnatl          # For normalize data
 
   # - /domain@test_domains.NATL: NATL
   # - /domain@test_domains.qnatl: qnatl

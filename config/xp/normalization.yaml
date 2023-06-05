@@ -36,7 +36,7 @@ xp_overrides_src:
       domain_limits: ${src_domain.train}
     dl_kw: {batch_size: 2, num_workers: 64}
 
-# test_periods: {"Octobre-December":["2012-10-22", "2012-12-02"]}
+test_periods: {"Octobre-December":["2009-10-22", "2009-12-02"]}
 
 # ## ==== With NATL Data ====
 # xp_overrides_src:
@@ -46,7 +46,7 @@ xp_overrides_src:
 #       domain_limits: ${src_domain.train}
 #     dl_kw: {batch_size: 2, num_workers: 64}
 
-test_periods: {"Octobre-December":["2009-10-22", "2009-12-02"]}
+# test_periods: {"Octobre-December":["2012-10-22", "2012-12-02"]}
 
 
 trainer: 

@@ -105,4 +105,4 @@ defaults:
   # - /domain@test_domains.osmosis: osmosis 
   # - /domain@test_domains.eNATL: eNATL
   # - /domain@test_domains.stage: stage
-  - _self
+  - _self_

@@ -92,7 +92,7 @@ entrypoints:
     src_dm: ${src_dm}
 
 defaults:
-  - /domain: gf                  # prediction
+  - /domain: cNATL                  # prediction
   - /domain@src_domain: gf        # For normalize data
 
   # - /domain@test_domains.NATL: NATL

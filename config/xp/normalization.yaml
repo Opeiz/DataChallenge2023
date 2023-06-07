@@ -27,7 +27,7 @@ xp_overrides_src:
     xrds_kw:
       strides: {lat: 200, lon: 200}
       domain_limits: ${src_domain.train}
-    dl_kw: {batch_size: 2}
+    dl_kw: {batch_size: 2, num_workers: 0}
 
 # ## ==== With NATL Data ====
 # xp_overrides_src:

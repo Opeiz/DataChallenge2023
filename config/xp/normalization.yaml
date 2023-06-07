@@ -24,10 +24,10 @@ xp_overrides_src:
   datamodule:
     input_da: 
       _target_: src.utils.load_enatl
-    xrds_kw:
-      strides: {lat: 200, lon: 200}
-      domain_limits: ${src_domain.train}
-    dl_kw: {batch_size: 2, num_workers: 0}
+    # xrds_kw:
+    #   strides: {lat: 200, lon: 200}
+    #   domain_limits: ${src_domain.train}
+    # dl_kw: {batch_size: 2, num_workers: 0}
 
 # ## ==== With NATL Data ====
 # xp_overrides_src:
@@ -89,11 +89,11 @@ entrypoints:
     test_domains: ${test_domains}
     test_periods: ${test_periods}
     save_dir: ${hydra:runtime.output_dir}
-    # src_dm: ${src_dm}
+    src_dm: ${src_dm}
 
 defaults:
   - /domain: cNATL                  # prediction
-  # - /domain@src_domain: cNATL        # For normalize data
+  - /domain@src_domain: cNATL        # For normalize data
 
   # - /domain@test_domains.NATL: NATL
   # - /domain@test_domains.qnatl: qnatl

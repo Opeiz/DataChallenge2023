@@ -27,7 +27,7 @@ xp_overrides_src:
     xrds_kw:
       strides: {lat: 200, lon: 200}
       domain_limits: ${src_domain.train}
-    dl_kw: {batch_size: 4, num_workers: 64}
+    dl_kw: {batch_size: 2}
 
 # ## ==== With NATL Data ====
 # xp_overrides_src:
@@ -35,7 +35,7 @@ xp_overrides_src:
 #     xrds_kw:
 #       strides: {lat: 200, lon: 200}s
 #       domain_limits: ${src_domain.train}
-#     dl_kw: {batch_size: 2, num_workers: 64}
+#     dl_kw: {batch_size: 2}
 
 test_periods: {"Octobre-December":["2009-10-22", "2009-12-02"]}
 

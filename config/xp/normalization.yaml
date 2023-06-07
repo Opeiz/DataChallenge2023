@@ -17,7 +17,7 @@ xp_overrides:
     xrds_kw:
       strides: {lat: 200, lon: 200}
       domain_limits: ${domain.train}
-    dl_kw: {batch_size: 2}
+    dl_kw: {batch_size: 2, num_workers: 1}
 
 ## ==== With eNATL Data ====
 xp_overrides_src:
@@ -34,13 +34,13 @@ xp_overrides_src:
     xrds_kw:
       strides: {lat: 200, lon: 200}
       domain_limits: ${src_domain.train}
-    dl_kw: {batch_size: 2}
+    dl_kw: {batch_size: 2, num_workers: 1}
 
 # ## ==== With NATL Data ====
 # xp_overrides_src:
 #   datamodule:
 #     xrds_kw:
-#       strides: {lat: 200, lon: 200}s
+#       strides: {lat: 200, lon: 200}
 #       domain_limits: ${src_domain.train}
 #     dl_kw: {batch_size: 2}
 

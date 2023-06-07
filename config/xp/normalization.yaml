@@ -20,22 +20,22 @@ xp_overrides:
     dl_kw: {batch_size: 2, num_workers: 64}
 
 ## ==== With eNATL Data ====
-# xp_overrides_src:
-#   datamodule:
-#     input_da: 
-#       _target_: src.utils.load_enatl
-#     xrds_kw:
-#       strides: {lat: 200, lon: 200}
-#       domain_limits: ${src_domain.train}
-#     dl_kw: {batch_size: 2, num_workers: 64}
-
-# ## ==== With NATL Data ====
 xp_overrides_src:
   datamodule:
+    input_da: 
+      _target_: src.utils.load_enatl
     xrds_kw:
       strides: {lat: 200, lon: 200}
       domain_limits: ${src_domain.train}
-    dl_kw: {batch_size: 2, num_workers: 64}
+    dl_kw: {batch_size: 4, num_workers: 64}
+
+# ## ==== With NATL Data ====
+# xp_overrides_src:
+#   datamodule:
+#     xrds_kw:
+#       strides: {lat: 200, lon: 200}s
+#       domain_limits: ${src_domain.train}
+#     dl_kw: {batch_size: 2, num_workers: 64}
 
 test_periods: {"Octobre-December":["2009-10-22", "2009-12-02"]}
 
@@ -105,4 +105,4 @@ defaults:
   # - /domain@test_domains.osmosis: osmosis 
   # - /domain@test_domains.eNATL: eNATL
   # - /domain@test_domains.stage: stage
-  - _self_
+  - _self

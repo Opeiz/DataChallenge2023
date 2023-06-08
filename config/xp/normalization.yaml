@@ -100,7 +100,7 @@ entrypoints:
 
 defaults:
   - /domain: cNATL                  # prediction
-  - /domain@src_domain: cNATL        # For normalize data
+  - /domain@src_domain: gf        # For normalize data
 
   # - /domain@test_domains.NATL: NATL
   # - /domain@test_domains.qnatl: qnatl

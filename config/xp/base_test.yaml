@@ -23,7 +23,7 @@ trainer:
     - _target_: pytorch_lightning.callbacks.LearningRateMonitor
     - _target_: pytorch_lightning.callbacks.ModelCheckpoint
       monitor: val_rmse
-      save_top_k: 10
+      save_top_k: 5
       filename: '{val_rmse:.4f}-{epoch:03d}'
 
 datamodule:

@@ -102,7 +102,7 @@ defaults:
   - /domain: NATL                  # prediction
   - /domain@src_domain: cNATL        # For normalize data
 
-  - /domain@test_domains: gf
+  - /domain@test_domains.gf: gf
   # - /domain@test_domains.NATL: NATL
   # - /domain@test_domains.qnatl: qnatl
   # - /domain@test_domains.4gf: 4gf

@@ -17,7 +17,7 @@ xp_overrides:
     xrds_kw:
       strides: {lat: 200, lon: 200}
       domain_limits: ${domain.train}
-    dl_kw: {batch_size: 2, num_workers: 4}
+    dl_kw: {batch_size: 2, num_workers: 1}
 
 ## ==== With eNATL Data ====
 xp_overrides_src:
@@ -34,7 +34,7 @@ xp_overrides_src:
     xrds_kw:
       strides: {lat: 200, lon: 200}
       domain_limits: ${src_domain.train}
-    dl_kw: {batch_size: 2, num_workers: 4}
+    dl_kw: {batch_size: 2, num_workers: 1}
 
 # ## ==== With NATL Data ====
 # xp_overrides_src:
@@ -42,7 +42,7 @@ xp_overrides_src:
 #     xrds_kw:
 #       strides: {lat: 200, lon: 200}
 #       domain_limits: ${src_domain.train}
-#     dl_kw: {batch_size: 2, num_workers: 4}
+#     dl_kw: {batch_size: 2, num_workers: 1}
 
 test_periods: {"Octobre-December":["2009-10-22", "2009-12-02"]}
 
@@ -99,12 +99,12 @@ entrypoints:
     src_dm: ${src_dm}
 
 defaults:
-  - /domain: cNATL                  # prediction
+  - /domain: NATL                  # prediction
   - /domain@src_domain: cNATL        # For normalize data
 
+  - /domain@test_domains: gf
   # - /domain@test_domains.NATL: NATL
   # - /domain@test_domains.qnatl: qnatl
-  - /domain@test_domains: gf
   # - /domain@test_domains.4gf: 4gf
   # - /domain@test_domains.2gf: 2gf
   # - /domain@test_domains.gf: gf

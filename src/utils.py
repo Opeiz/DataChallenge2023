@@ -166,9 +166,6 @@ def psd_based_scores(da_rec, da_ref):
     signal = da_ref
     signal["time"] = (signal.time - signal.time[0]) / np.timedelta64(1, "D")
     
-    print('===== TEST ====')
-    print(err)
-
     psd_err = xrft.power_spectrum(
         err, dim=["time", "lon"], detrend="constant", window="hann"
     ).compute()

@@ -30,7 +30,7 @@ datamodule:
   _target_: src.data.BaseDataModule
   input_da: 
     _target_: src.utils.load_altimetry_data
-    path: ${paths.natl_gf_5nads}
+    path: ${paths.enatl_gf_5nads}
   domains:
     train:
       time: {_target_: builtins.slice , _args_: ['2010-02-24', '2010-07-31']}

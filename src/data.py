@@ -230,7 +230,7 @@ class BaseDataModule(pl.LightningDataModule):
         (mean_batch, std_batch) = train_data.sel(variable='tgt').pipe(lambda da: (da.mean().values.item(), da.std().values.item()))
         
         print("\n===== STD et MEAN ====")
-        print(mean_batch,"/",std_batch,"\n")
+        print(mean_batch,"/",std_batch)
 
         return (mean_batch, std_batch)
 

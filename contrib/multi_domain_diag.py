@@ -56,7 +56,7 @@ def multi_domain_osse_diag(
     save_dir=None,
     src_dm=None,
 ):
-    print("\n====== Metrics Comparison =====")
+    print("====== Metrics Comparison =====")
     print("Type of normalization: ",normalization)
     
     ckpt = torch.load(ckpt_path)["state_dict"]

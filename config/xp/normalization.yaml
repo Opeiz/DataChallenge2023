@@ -95,7 +95,6 @@ entrypoints:
     rec_weight: ${rec_weight}
     test_domains: ${test_domains}
     test_periods: ${test_periods}
-    normalization: "NATL"
     save_dir: ${hydra:runtime.output_dir}
     src_dm: ${src_dm}
 

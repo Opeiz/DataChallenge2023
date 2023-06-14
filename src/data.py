@@ -267,6 +267,7 @@ class BaseDataModule(pl.LightningDataModule):
         return torch.utils.data.DataLoader(self.val_ds, shuffle=False, **self.dl_kw)
 
     def test_dataloader(self):
+        print("======= DATALOADER ==========")
         print(torch.utils.data.DataLoader(self.test_ds, shuffle=False, **self.dl_kw))
         return torch.utils.data.DataLoader(self.test_ds, shuffle=False, **self.dl_kw)
 

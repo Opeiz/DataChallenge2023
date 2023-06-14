@@ -229,8 +229,8 @@ class BaseDataModule(pl.LightningDataModule):
         train_data = self.input_da.sel(self.xrds_kw.get('domain_limits', {})).sel(self.domains['train'])
         (mean_batch, std_batch) = train_data.sel(variable='tgt').pipe(lambda da: (da.mean().values.item(), da.std().values.item()))
         
-        print("===== STD et MEAN ====")
-        print(mean_batch,"/",std_batch)
+        print("\n===== STD et MEAN ====")
+        print(mean_batch,"/",std_batch,"\n")
 
         return (mean_batch, std_batch)
 

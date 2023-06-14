@@ -246,18 +246,16 @@ class BaseDataModule(pl.LightningDataModule):
         train_data = self.input_da.sel(self.domains['train'])
         post_fn = self.post_fn()
 
-        self.train_ds = XrDataset(
-            train_data, **self.xrds_kw, postpro_fn=post_fn,
-        )
-        if self.aug_factor > 0:
-            self.train_ds = AugmentedDataset(self.train_ds, aug_factor=self.aug_factor, aug_only=self.aug_only)
+        self.train_ds = XrDataset(train_data, **self.xrds_kw, postpro_fn=post_fn)
+        
+        if self.aug_factor > 0: self.train_ds = AugmentedDataset(self.train_ds, aug_factor=self.aug_factor, aug_only=self.aug_only)
 
-        self.val_ds = XrDataset(
-            self.input_da.sel(self.domains['val']), **self.xrds_kw, postpro_fn=post_fn,
-        )
-        self.test_ds = XrDataset(
-            self.input_da.sel(self.domains['test']), **self.xrds_kw, postpro_fn=post_fn,
-        )
+        self.val_ds = XrDataset(self.input_da.sel(self.domains['val']), **self.xrds_kw, postpro_fn=post_fn)
+        
+        self.test_ds = XrDataset(self.input_da.sel(self.domains['test']), **self.xrds_kw, postpro_fn=post_fn)
+
+        print("===== test =====")
+        print(self.test_ds)
 
 
     def train_dataloader(self):
@@ -267,8 +265,6 @@ class BaseDataModule(pl.LightningDataModule):
         return torch.utils.data.DataLoader(self.val_ds, shuffle=False, **self.dl_kw)
 
     def test_dataloader(self):
-        print("======= DATALOADER ==========")
-        print(torch.utils.data.DataLoader(self.test_ds, shuffle=False, **self.dl_kw))
         return torch.utils.data.DataLoader(self.test_ds, shuffle=False, **self.dl_kw)
 
 class ConcatDataModule(BaseDataModule):
@@ -322,4 +318,4 @@ class RandValDataModule(BaseDataModule):
             self.train_ds = AugmentedDataset(self.train_ds, self.aug_factor)
 
         self.test_ds = XrDataset(self.input_da.sel(self.domains['test']), **self.xrds_kw, postpro_fn=post_fn,)
-
+

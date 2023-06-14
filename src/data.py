@@ -255,7 +255,7 @@ class BaseDataModule(pl.LightningDataModule):
         self.test_ds = XrDataset(self.input_da.sel(self.domains['test']), **self.xrds_kw, postpro_fn=post_fn)
 
         print("===== test =====")
-        print(self.test_ds)
+        print(self.test_ds[0])
 
 
     def train_dataloader(self):
@@ -318,4 +318,4 @@ class RandValDataModule(BaseDataModule):
             self.train_ds = AugmentedDataset(self.train_ds, self.aug_factor)
 
         self.test_ds = XrDataset(self.input_da.sel(self.domains['test']), **self.xrds_kw, postpro_fn=post_fn,)
-
+

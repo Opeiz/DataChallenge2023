@@ -244,6 +244,10 @@ class BaseDataModule(pl.LightningDataModule):
     def setup(self, stage='test'):
         train_data = self.input_da.sel(self.domains['train'])
         post_fn = self.post_fn()
+
+        print("\n====== post_fn ========")
+        print(post_fn)
+
         self.train_ds = XrDataset(
             train_data, **self.xrds_kw, postpro_fn=post_fn,
         )

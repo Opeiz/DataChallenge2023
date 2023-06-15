@@ -120,7 +120,6 @@ class XrDataset(torch.utils.data.Dataset):
 
         item = item.data.astype(np.float32)
         if self.postpro_fn is not None:
-            print("entro??")
             return self.postpro_fn(item)
         return item
 
@@ -247,11 +246,16 @@ class BaseDataModule(pl.LightningDataModule):
     def post_fn(self):
         normalize = lambda item: (item - self.norm_stats()[0]) / self.norm_stats()[1]
         
-        return ft.partial(ft.reduce,lambda i, f: f(i), [
+        normalisation = ft.partial(ft.reduce,lambda i, f: f(i), [
             TrainingItem._make,
             lambda item: item._replace(tgt=normalize(item.tgt)),
             lambda item: item._replace(input=normalize(item.input)),
         ])
+
+        print("normalisation")
+        print(normalisation)
+
+        return normalisation
 
 
     def setup(self, stage='test'):

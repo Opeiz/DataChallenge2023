@@ -247,6 +247,7 @@ class BaseDataModule(pl.LightningDataModule):
         normalize = lambda item: (item - self.norm_stats()[0]) / self.norm_stats()[1]
         
         test1 = lambda item: item._replace(tgt=normalize(item.tgt))
+        print(test1)
         test2 = lambda item: item._replace(input=normalize(item.input))
 
         normalisation = ft.partial(

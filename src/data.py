@@ -236,7 +236,9 @@ class BaseDataModule(pl.LightningDataModule):
     def train_mean_std(self):
 
         train_data = self.input_da.sel(self.xrds_kw.get('domain_limits', {})).sel(self.domains['train'])
+        
         train_data.to_netcdf(os.path.join("/users/local/j22opazo","train_data.nc"))
+        
         (mean_batch, std_batch) = train_data.sel(variable='tgt').pipe(lambda da: (da.mean().values.item(), da.std().values.item()))
         
         return (mean_batch, std_batch)
@@ -255,6 +257,8 @@ class BaseDataModule(pl.LightningDataModule):
         post_fn = self.post_fn()
 
         self.train_ds = XrDataset(train_data, **self.xrds_kw, postpro_fn=post_fn)
+        self.train_ds.to_netcdf(os.path.join("/users/local/j22opazo","train_ds.nc"))
+
         
         if self.aug_factor > 0: self.train_ds = AugmentedDataset(self.train_ds, aug_factor=self.aug_factor, aug_only=self.aug_only)
 

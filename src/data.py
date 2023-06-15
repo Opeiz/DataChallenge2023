@@ -31,8 +31,13 @@ class XrDataset(torch.utils.data.Dataset):
         - have the last dims correspond to the patch dims in same order
     """
     def __init__(
-            self, da, patch_dims, domain_limits=None, strides=None,
-            check_full_scan=False, check_dim_order=False,
+            self, 
+            da, 
+            patch_dims, 
+            domain_limits=None, 
+            strides=None,
+            check_full_scan=False, 
+            check_dim_order=False,
             postpro_fn=None
             ):
         """
@@ -255,8 +260,7 @@ class BaseDataModule(pl.LightningDataModule):
         self.test_ds = XrDataset(self.input_da.sel(self.domains['test']), **self.xrds_kw, postpro_fn=post_fn)
 
         print("===== test =====")
-        print(self.test_ds[0])
-
+        print(self.test_ds[0]) #####
 
     def train_dataloader(self):
         return torch.utils.data.DataLoader(self.train_ds, shuffle=True, **self.dl_kw)

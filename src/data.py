@@ -5,6 +5,8 @@ import xarray as xr
 import itertools
 import functools as ft
 import tqdm
+import os
+
 from collections import namedtuple
 
 TrainingItem = namedtuple('TrainingItem', ['input', 'tgt'])
@@ -234,6 +236,7 @@ class BaseDataModule(pl.LightningDataModule):
     def train_mean_std(self):
 
         train_data = self.input_da.sel(self.xrds_kw.get('domain_limits', {})).sel(self.domains['train'])
+        train_data.to_netcdf(os.path.join("/users/local/j22opazo","train_data.nc"))
         (mean_batch, std_batch) = train_data.sel(variable='tgt').pipe(lambda da: (da.mean().values.item(), da.std().values.item()))
         
         return (mean_batch, std_batch)

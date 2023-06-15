@@ -64,13 +64,7 @@ def multi_domain_osse_diag(
 
     norm_dm = src_dm or dm
 
-    print("===== norm ====")
-    print(norm_dm)
-
     lit_mod.norm_stats = norm_dm.norm_stats()
-
-    # print("====== Lit mod ======")
-    # print(lit_mod)
 
     trainer.test(lit_mod, datamodule=dm)
     tdat = lit_mod.test_data
@@ -99,11 +93,6 @@ def multi_domain_osse_metrics(tdat, test_domains, test_periods):
             test_domain = dict(time=slice(*test_periods[p]), **tdom_spat)
 
             da_rec, da_ref = tdat.sel(test_domain).drop("ssh") ,tdat.sel(test_domain).ssh
-
-            #Export data for comparison
-            print("===== Export data ======")
-            da_rec.to_netcdf(os.path.join(path,"rec.nc"))
-            da_ref.to_netcdf(os.path.join(path,"ref.nc"))
 
             leaderboard_rmse = (
                 1.0 - (((da_rec - da_ref) ** 2).mean()) ** 0.5 / (((da_ref) ** 2).mean()) ** 0.5

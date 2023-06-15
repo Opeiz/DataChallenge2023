@@ -237,7 +237,7 @@ class BaseDataModule(pl.LightningDataModule):
 
         train_data = self.input_da.sel(self.xrds_kw.get('domain_limits', {})).sel(self.domains['train'])
         
-        train_data.to_netcdf(os.path.join("/users/local/j22opazo","train_data.nc"))
+        # train_data.to_netcdf(os.path.join("/users/local/j22opazo","train_data.nc"))
         
         (mean_batch, std_batch) = train_data.sel(variable='tgt').pipe(lambda da: (da.mean().values.item(), da.std().values.item()))
         

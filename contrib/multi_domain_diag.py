@@ -1,4 +1,3 @@
-from pathlib import Path
 import xarray as xr
 import pandas as pd
 import torch
@@ -6,10 +5,12 @@ import einops
 import numpy as np
 import scipy.ndimage as ndi
 import omegaconf
-from omegaconf import OmegaConf
 import src.utils
 import hydra
+import os
 
+from omegaconf import OmegaConf
+from pathlib import Path
 
 def load_cfg_from_xp(xpd, key, overrides=None, call=True):
     
@@ -83,6 +84,8 @@ def multi_domain_osse_diag(
     # print(metrics_df.to_markdown())
     metrics_df.to_csv(save_dir / "multi_domain_metrics.csv")
 
+path = "/users/local/j22opazo/DataChallenge2023_Stage_IMT"
+
 
 def multi_domain_osse_metrics(tdat, test_domains, test_periods):
     metrics = []
@@ -93,7 +96,10 @@ def multi_domain_osse_metrics(tdat, test_domains, test_periods):
 
             da_rec, da_ref = tdat.sel(test_domain).drop("ssh") ,tdat.sel(test_domain).ssh
 
-            print(da_rec)
+            #Export data for comparison
+            print("===== Export data ======")
+            da_rec.to_netcdf(os.path.join(path,"rec.nc"))
+            da_ref.to_netcdf(os.path.join(path,"ref.nc"))
 
             leaderboard_rmse = (
                 1.0 - (((da_rec - da_ref) ** 2).mean()) ** 0.5 / (((da_ref) ** 2).mean()) ** 0.5

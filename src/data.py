@@ -259,9 +259,6 @@ class BaseDataModule(pl.LightningDataModule):
         
         self.test_ds = XrDataset(self.input_da.sel(self.domains['test']), **self.xrds_kw, postpro_fn=post_fn)
 
-        print("===== test =====")
-        print(self.test_ds[0]) #####
-
     def train_dataloader(self):
         return torch.utils.data.DataLoader(self.train_ds, shuffle=True, **self.dl_kw)
 

@@ -63,10 +63,13 @@ def multi_domain_osse_diag(
         lit_mod.rec_weight = torch.from_numpy(rec_weight)
 
     norm_dm = src_dm or dm
+
+    print(norm_dm)
+
     lit_mod.norm_stats = norm_dm.norm_stats()
 
-    print("====== Lit mod ======")
-    print(lit_mod)
+    # print("====== Lit mod ======")
+    # print(lit_mod)
 
     trainer.test(lit_mod, datamodule=dm)
     tdat = lit_mod.test_data
@@ -84,7 +87,7 @@ def multi_domain_osse_diag(
     # print(metrics_df.to_markdown())
     metrics_df.to_csv(save_dir / "multi_domain_metrics.csv")
 
-path = "/users/local/j22opazo/DataChallenge2023_Stage_IMT"
+path = "/users/local/j22opazo"
 
 
 def multi_domain_osse_metrics(tdat, test_domains, test_periods):

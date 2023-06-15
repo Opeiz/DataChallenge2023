@@ -50,6 +50,7 @@ class XrDataset(torch.utils.data.Dataset):
         check_full_scan: Boolean: if True raise an error if the whole domain is not scanned by the patch size stride combination
         """
         super().__init__()
+
         self.return_coords = False
         self.postpro_fn = postpro_fn
         self.da = da.sel(**(domain_limits or {}))
@@ -60,7 +61,6 @@ class XrDataset(torch.utils.data.Dataset):
             dim: max((da_dims[dim] - patch_dims[dim]) // self.strides.get(dim, 1) + 1, 0)
             for dim in patch_dims
         }
-
 
         if check_full_scan:
             for dim in patch_dims:
@@ -85,6 +85,7 @@ class XrDataset(torch.utils.data.Dataset):
                         patch_dims {list(patch_dims)}
                         """
                 )
+
     def __len__(self):
         size = 1
         for v in self.ds_size.values():
@@ -119,6 +120,7 @@ class XrDataset(torch.utils.data.Dataset):
 
         item = item.data.astype(np.float32)
         if self.postpro_fn is not None:
+            print("entro??")
             return self.postpro_fn(item)
         return item
 
@@ -126,7 +128,6 @@ class XrDataset(torch.utils.data.Dataset):
         """
         takes as input a list of np.ndarray of dimensions (b, *, *patch_dims)
         return a stitched xarray.DataArray with the coords of patch_dims
-
         
         batches: list of torch tensor correspondin to batches without shuffle
         weight: tensor of size patch_dims corresponding to the weight of a prediction depending on the position on the patch (default to ones everywhere)
@@ -245,6 +246,7 @@ class BaseDataModule(pl.LightningDataModule):
 
     def post_fn(self):
         normalize = lambda item: (item - self.norm_stats()[0]) / self.norm_stats()[1]
+        
         return ft.partial(ft.reduce,lambda i, f: f(i), [
             TrainingItem._make,
             lambda item: item._replace(tgt=normalize(item.tgt)),
@@ -257,8 +259,6 @@ class BaseDataModule(pl.LightningDataModule):
         post_fn = self.post_fn()
 
         self.train_ds = XrDataset(train_data, **self.xrds_kw, postpro_fn=post_fn)
-        self.train_ds.to_netcdf(os.path.join("/users/local/j22opazo","train_ds.nc"))
-
         
         if self.aug_factor > 0: self.train_ds = AugmentedDataset(self.train_ds, aug_factor=self.aug_factor, aug_only=self.aug_only)
 

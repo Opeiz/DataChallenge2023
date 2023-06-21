@@ -262,7 +262,8 @@ class BaseDataModule(pl.LightningDataModule):
 
         self.train_ds = XrDataset(train_data, **self.xrds_kw, postpro_fn=post_fn)
         
-        if self.aug_factor > 0: self.train_ds = AugmentedDataset(self.train_ds, aug_factor=self.aug_factor, aug_only=self.aug_only)
+        if self.aug_factor > 0: 
+            self.train_ds = AugmentedDataset(self.train_ds, aug_factor=self.aug_factor, aug_only=self.aug_only)
 
         self.val_ds = XrDataset(self.input_da.sel(self.domains['val']), **self.xrds_kw, postpro_fn=post_fn)
         

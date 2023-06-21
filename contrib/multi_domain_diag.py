@@ -65,6 +65,7 @@ def multi_domain_osse_diag(
     norm_dm = src_dm or dm
 
     lit_mod.norm_stats = norm_dm.norm_stats()
+    print("==========")
     print(lit_mod.norm_stats)
     # dm.norm_stats = dm.norm_stats()
     # print(dm.norm_stats[0])

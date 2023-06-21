@@ -243,14 +243,12 @@ class BaseDataModule(pl.LightningDataModule):
     def post_fn(self):
         normalize = lambda item: (item - self.norm_stats()[0]) / self.norm_stats()[1]
 
-        normalisation = ft.partial(
+        return ft.partial(
             ft.reduce,lambda i, f: f(i), [
                 TrainingItem._make,
                 lambda item: item._replace(tgt=normalize(item.tgt)),
                 lambda item: item._replace(input=normalize(item.input))
         ])
-
-        return normalisation
 
 
     def setup(self, stage='test'):

@@ -69,7 +69,7 @@ src_dm:
   _target_: contrib.multi_domain_diag.load_cfg_from_xp
   key: datamodule
   xpd : ${xpd}
-  overrides: ${xp_overrides_src_e}
+  overrides: ${xp_overrides_src_n}
 
 ckpt:
   _target_: src.utils.best_ckpt

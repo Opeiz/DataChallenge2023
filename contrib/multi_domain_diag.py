@@ -69,7 +69,7 @@ def multi_domain_osse_diag(
 
     lit_mod.norm_stats = norm_dm.norm_stats()
     # print(lit_mod.norm_stats[0])
-    dm.norm_stats = dm.norm_stats()
+    # dm.norm_stats = dm.norm_stats()
     # print(dm.norm_stats[0])
 
     trainer.test(lit_mod, datamodule=dm)

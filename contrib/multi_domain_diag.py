@@ -69,7 +69,7 @@ def multi_domain_osse_diag(
     print(lit_mod.norm_stats)
     dm._norm_stats = norm_dm.norm_stats()
     print("========== Mean and STD dm =======")
-    print(dm.norm_stats())
+    print(dm.norm_stats(), "\n")
 
     trainer.test(lit_mod, datamodule=dm)
     tdat = lit_mod.test_data
@@ -86,9 +86,6 @@ def multi_domain_osse_diag(
     # print("==== Metrics ====")
     # print(metrics_df.to_markdown())
     metrics_df.to_csv(save_dir / "multi_domain_metrics.csv")
-
-path = "/users/local/j22opazo"
-
 
 def multi_domain_osse_metrics(tdat, test_domains, test_periods):
     metrics = []
@@ -129,7 +126,7 @@ def multi_domain_osse_metrics(tdat, test_domains, test_periods):
     metrics_df = pd.concat(metrics).sort_values(by='mu')
     
     print("==== Metrics ====")
-    print(metrics_df.to_markdown())
+    print(metrics_df.to_markdown(), "\n")
     # metrics_df.to_csv("Miost.csv")
 
     return metrics_df

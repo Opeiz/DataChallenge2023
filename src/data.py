@@ -21,7 +21,7 @@ class XrDataset(torch.utils.data.Dataset):
     """
     torch Dataset based on an xarray.DataArray with on the fly slicing.
 
-    ### Usage: #### 
+    ### Usage: #### 
     If you want to be able to reconstruct the input
 
     the input xr.DataArray should:

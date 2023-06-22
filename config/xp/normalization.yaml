@@ -41,6 +41,7 @@ xp_overrides_src_e:
 xp_overrides_src_n:
   datamodule:
     xrds_kw:
+      patch_dims: { time: 15, lat: 120, lon: 120}
       strides: {lat: 200, lon: 200}
       domain_limits: ${src_domain.train}
     dl_kw: {batch_size: 4, num_workers: 1}

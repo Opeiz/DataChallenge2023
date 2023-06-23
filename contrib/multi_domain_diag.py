@@ -69,7 +69,7 @@ def multi_domain_osse_diag(
     print(lit_mod.norm_stats)
     print("========== Mean and STD dm =======")
     print(dm.norm_stats())
-    dm._norm_stats = norm_dm.norm_stats()
+    dm._norm_stats = 3
     print("========== Mean and STD dm =======")
     print(dm.norm_stats(), "\n")
 

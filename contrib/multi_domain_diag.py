@@ -65,13 +65,13 @@ def multi_domain_osse_diag(
     norm_dm = src_dm or dm
 
     lit_mod.norm_stats = norm_dm.norm_stats()
-    print("========== Mean and STD Lit-mod ======")
-    print(lit_mod.norm_stats)
-    print("========== Mean and STD dm =======")
-    print(dm.norm_stats())
-    dm._norm_stats = 3
-    print("========== Mean and STD dm =======")
-    print(dm.norm_stats(), "\n")
+    # print("========== Mean and STD Lit-mod ======")
+    # print(lit_mod.norm_stats)
+    # print("========== Mean and STD dm =======")
+    # print(dm.norm_stats())
+    # dm._norm_stats = 3
+    # print("========== Mean and STD dm =======")
+    # print(dm.norm_stats(), "\n")
 
     trainer.test(lit_mod, datamodule=dm)
     tdat = lit_mod.test_data

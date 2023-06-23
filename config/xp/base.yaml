@@ -48,16 +48,6 @@ datamodule:
 
 model:
   _target_: src.models.Lit4dVarNet
-  opt_fn:
-    _target_: src.utils.cosanneal_lr_adam
-    _partial_: true
-    lr: 1e-3
-    T_max: ${trainer.max_epochs}
-  rec_weight:
-      _target_: src.utils.get_triang_time_wei
-      patch_dims: ${datamodule.xrds_kw.patch_dims}
-      crop: {time: 0, lat: 20, lon: 20}
-      offset: 0
   solver: 
     _target_: src.models.GradSolver
     n_step: 10
@@ -70,12 +60,22 @@ model:
       activation: 
         _target_: torch.nn.functional.relu
         _partial_: true
-    obs_cost: 
+    obs_cost: # Cost
       _target_: src.models.BaseObsCost
     grad_mod: 
       _target_: src.models.ConvLstmGradModel
       dim_in: ${datamodule.xrds_kw.patch_dims.time}
       dim_hidden: 48
+  rec_weight: 
+    _target_: src.utils.get_triang_time_wei
+    patch_dims: ${datamodule.xrds_kw.patch_dims}
+    crop: {time: 0, lat: 20, lon: 20}
+    offset: 0
+  opt_fn: # Optimizer
+    _target_: src.utils.cosanneal_lr_adam
+    _partial_: true
+    lr: 1e-3
+    T_max: ${trainer.max_epochs}
 
 
 entrypoints:

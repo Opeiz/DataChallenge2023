@@ -227,6 +227,7 @@ class BaseDataModule(pl.LightningDataModule):
 
     def norm_stats(self):
         if self._norm_stats is None:
+            print("Im in!")
             self._norm_stats = self.train_mean_std()
         return self._norm_stats
 

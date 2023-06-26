@@ -358,7 +358,7 @@ def load_enatl(*args, **kwargs):
     ds = ds.transpose('time', 'lat', 'lon').to_array().load()
     return ds
 
-def cross_tgt_input():
+def cross_tgt_input(path):
     natl = src.utils.load_altimetry_data(path='data/natl_gf_w_5nadirs.nc')
     enatl = src.utils.load_enatl()
 

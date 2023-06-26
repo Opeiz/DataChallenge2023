@@ -29,7 +29,7 @@ trainer:
 datamodule:
   _target_: src.data.BaseDataModule
   input_da: 
-    _target_: src.utils.load_altimetry_data
+    _target_: src.utils.cross_tgt_input
     path: ${paths.enatl_gf_5nads}
   domains:
     train:

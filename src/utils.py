@@ -120,7 +120,6 @@ def load_altimetry_data(path, obs_from_tgt=False):
         .to_array()
     )
 
-
 def load_full_natl_data(
         path_obs="../sla-data-registry/CalData/cal_data_new_errs.nc",
         path_gt="../sla-data-registry/NATL60/NATL/ref_new/NATL60-CJM165_NATL_ssh_y2013.1y.nc",
@@ -358,3 +357,39 @@ def load_enatl(*args, **kwargs):
     ds = ds.assign(input=ds.tgt.transpose(*ds.input.dims).where(np.isfinite(ds.input), np.nan))
     ds = ds.transpose('time', 'lat', 'lon').to_array().load()
     return ds
+
+def cross_tgt_input():
+    natl = src.utils.load_altimetry_data(path='data/natl_gf_w_5nadirs.nc')
+    enatl = src.utils.load_enatl()
+
+    lat = slice(32,44)
+    lon = slice(-65,-55)
+    
+    cross = natl
+
+    cross.to_dataset(dim='variable').assign(
+        input = lambda ds: ds.tgt.where(
+            np.isfinite(enatl.isel(time=slice(0,365)).sel(lat=lat,lon=slice(-65,-53)).sel(variable='input').values),np.nan
+        )
+    )   
+
+    return cross
+
+def load_cross(ds, obs_from_tgt=False):
+    ds =  (
+        xr.open_dataset(path)
+        .load()
+        .assign(
+            input=lambda ds: ds.nadir_obs,
+            tgt=lambda ds: remove_nan(ds.ssh),
+        )    
+    )
+
+    if obs_from_tgt:
+        ds = ds.assign(input=ds.tgt.where(np.isfinite(ds.input), np.nan))
+        
+    return (
+        ds[[*src.data.TrainingItem._fields]]
+        .transpose("time", "lat", "lon")
+        .to_array()
+    )

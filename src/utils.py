@@ -375,21 +375,21 @@ def cross_tgt_input(path):
 
     return cross
 
-def load_cross(ds, obs_from_tgt=False):
-    ds =  (
-        xr.open_dataset(path)
-        .load()
-        .assign(
-            input=lambda ds: ds.nadir_obs,
-            tgt=lambda ds: remove_nan(ds.ssh),
-        )    
+def cross_enatl(path):
+    natl = src.utils.load_altimetry_data(path='data/natl_gf_w_5nadirs.nc')
+    enatl = src.utils.load_enatl()
+
+    lat = slice(32,44)
+    lon = slice(-65,-55)
+    
+    enatl = enatl.sel(time=enatl.time[0:365],lat=lat,lon=lon)
+
+    new_enatl_ds = enatl
+
+    new_enatl_ds.to_dataset(dim='variable').assign(
+        input = lambda ds: ds.tgt.where(
+            np.isfinite(natl.isel(time=slice(0,365)).sel(lat=lat,lon=slice(-67,-53)).sel(variable='input').values),np.nan
+        )
     )
 
-    if obs_from_tgt:
-        ds = ds.assign(input=ds.tgt.where(np.isfinite(ds.input), np.nan))
-        
-    return (
-        ds[[*src.data.TrainingItem._fields]]
-        .transpose("time", "lat", "lon")
-        .to_array()
-    )
+    return new_enatl_ds

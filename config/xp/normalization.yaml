@@ -69,7 +69,7 @@ src_dm:
   _target_: contrib.multi_domain_diag.load_cfg_from_xp
   key: datamodule
   xpd : ${xpd}
-  overrides: ${xp_overrides_src_e}  ## NATL o eNATL
+  overrides: ${xp_overrides_src_n}  ## NATL o eNATL
 
 ckpt:
   _target_: src.utils.best_ckpt
@@ -102,14 +102,14 @@ defaults:
   - /domain: gf                  # prediction
   - /domain@src_domain: gf        # For normalize data
 
-  # - /domain@test_domains.cNATL: cNATL
-  # - /domain@test_domains.NATL: NATL
-  # - /domain@test_domains.qnatl: qnatl
-  # - /domain@test_domains.4gf: 4gf
-  # - /domain@test_domains.2gf: 2gf
+  - /domain@test_domains.cNATL: cNATL
+  - /domain@test_domains.NATL: NATL
+  - /domain@test_domains.qnatl: qnatl
+  - /domain@test_domains.4gf: 4gf
+  - /domain@test_domains.2gf: 2gf
   - /domain@test_domains.gf: gf
-  # - /domain@test_domains.canaries: canaries
-  # - /domain@test_domains.osmosis: osmosis 
-  # - /domain@test_domains.eNATL: eNATL
-  # - /domain@test_domains.stage: stage
+  - /domain@test_domains.canaries: canaries
+  - /domain@test_domains.osmosis: osmosis 
+  - /domain@test_domains.eNATL: eNATL
+  - /domain@test_domains.stage: stage
   - _self_

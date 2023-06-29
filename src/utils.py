@@ -361,15 +361,12 @@ def load_enatl(*args, **kwargs):
 def cross_tgt_input(path):
     natl = src.utils.load_altimetry_data(path='data/natl_gf_w_5nadirs.nc')
     enatl = src.utils.load_enatl()
-
-    lat = slice(32,44)
-    lon = slice(-65,-55)
     
     cross = natl
 
     cross.to_dataset(dim='variable').assign(
         input = lambda ds: ds.tgt.where(
-            np.isfinite(enatl.isel(time=slice(0,365)).sel(lat=lat,lon=slice(-65,-53)).sel(variable='input').values),np.nan
+            np.isfinite(enatl.isel(time=slice(0,365)).sel(lat=slice(32,44),lon=slice(-65,-53)).sel(variable='input').values),np.nan
         )
     )   
 

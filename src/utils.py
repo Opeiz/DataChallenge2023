@@ -370,4 +370,6 @@ def cross_tgt_input(path):
         )
     )   
 
+    print("=cross=")
+    print(cross)
     return cross

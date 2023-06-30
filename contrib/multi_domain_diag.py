@@ -138,8 +138,7 @@ def multi_domain_osse_metrics(tdat, test_domains, test_periods):
     
     print("==== Metrics ====")
     print(metrics_df.to_markdown(), "\n")
-    # metrics_df.to_csv("Miost.csv")
-
+    
     return metrics_df
 
 def load_oi_4nadirs():

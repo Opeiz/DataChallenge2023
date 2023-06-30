@@ -81,11 +81,13 @@ def multi_domain_osse_diag(
         save_dir = Path(save_dir)
         save_dir.mkdir(parents=True, exist_ok=True)
     
+    print("=== tdat ===")
+    print(tdat)
+
     tdat.to_netcdf(save_dir / "multi_domain_tdat.nc")
 
     metrics_df = multi_domain_osse_metrics(tdat, test_domains, test_periods)
-    print("=== tdat ===")
-    print(tdat)
+    
 
     # print("==== Metrics ====")
     # print(metrics_df.to_markdown())
@@ -99,8 +101,8 @@ def multi_domain_osse_metrics(tdat, test_domains, test_periods):
             test_domain = dict(time=slice(*test_periods[p]), **tdom_spat)
 
             da_rec, da_ref = tdat.sel(test_domain).drop("ssh"), tdat.sel(test_domain).ssh
-            print("\n=== TEST ====")
-            print(da_rec,da_ref)
+            # print("\n=== TEST ====")
+            # print(da_rec,da_ref)
 
 
             leaderboard_rmse = (

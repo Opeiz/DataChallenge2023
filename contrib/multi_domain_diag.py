@@ -75,14 +75,16 @@ def multi_domain_osse_diag(
 
     trainer.test(lit_mod, datamodule=dm)
     tdat = lit_mod.test_data
+    
+    print("=== tdat ===")
+    print(tdat)
+    
     tdat = tdat.assign(rec_ssh=tdat.rec_ssh.where(np.isfinite(tdat.ssh), np.nan)).drop("obs")
 
     if save_dir is not None:
         save_dir = Path(save_dir)
         save_dir.mkdir(parents=True, exist_ok=True)
     
-    print("=== tdat ===")
-    print(tdat)
 
     tdat.to_netcdf(save_dir / "multi_domain_tdat.nc")
 

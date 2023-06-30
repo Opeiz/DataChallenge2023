@@ -366,7 +366,7 @@ def cross_tgt_input(path):
 
     cross.to_dataset(dim='variable').assign(
         input = lambda ds: ds.tgt.where(
-            np.isfinite(enatl.isel(time=slice(0,365)).sel(lat=slice(32,44),lon=slice(-65,-53)).sel(variable='input').values),np.nan
+            np.isfinite(enatl.isel(time=slice(0,365)).sel(lat=slice(32,44),lon=slice(-66,-54)).sel(variable='input').values),np.nan
         )
     )   
 

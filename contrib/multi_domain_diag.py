@@ -88,7 +88,7 @@ def multi_domain_osse_diag(
 
     tdat.to_netcdf(save_dir / "multi_domain_tdat.nc")
 
-    # metrics_df = multi_domain_osse_metrics(tdat, test_domains, test_periods)
+    metrics_df = multi_domain_osse_metrics(tdat, test_domains, test_periods)
     
 
     # print("==== Metrics ====")

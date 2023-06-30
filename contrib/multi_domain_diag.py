@@ -84,6 +84,8 @@ def multi_domain_osse_diag(
     tdat.to_netcdf(save_dir / "multi_domain_tdat.nc")
 
     metrics_df = multi_domain_osse_metrics(tdat, test_domains, test_periods)
+    print("=== tdat ===")
+    print(tdat)
 
     # print("==== Metrics ====")
     # print(metrics_df.to_markdown())
@@ -96,7 +98,7 @@ def multi_domain_osse_metrics(tdat, test_domains, test_periods):
             tdom_spat = test_domains[d].test
             test_domain = dict(time=slice(*test_periods[p]), **tdom_spat)
 
-            da_rec, da_ref = tdat.sel(test_domain).drop("ssh") ,tdat.sel(test_domain).ssh
+            da_rec, da_ref = tdat.sel(test_domain).drop("ssh"), tdat.sel(test_domain).ssh
             print("\n=== TEST ====")
             print(da_rec,da_ref)
 

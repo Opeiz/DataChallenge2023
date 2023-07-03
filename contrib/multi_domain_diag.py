@@ -180,8 +180,8 @@ def load_miost():
 
 def train_mean_std(dm):
 
-    # train_data = dm.input_da.sel(lat=lat,lon=lon).sel(dm.domains['train'])
+    train_data = dm.input_da
             
-    (mean_batch, std_batch) = dm.sel(variable='ssh').pipe(lambda da: (da.mean().values.item(), da.std().values.item()))
+    (mean_batch, std_batch) = train_data.sel(variable='ssh').pipe(lambda da: (da.mean().values.item(), da.std().values.item()))
     
     return (mean_batch, std_batch)

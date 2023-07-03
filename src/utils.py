@@ -366,8 +366,8 @@ def cross_tgt_input(path,domain):
         lat = slice(32,44)
         lon = slice(-66,-54)
     elif domain == "cNATL":
-        lon=[-51, -9]
-        lat=[32, 54]
+        lon = slice(-51, -9)
+        lat = slice(32, 54)
 
     cross = natl
     cross.to_dataset(dim='variable').assign(

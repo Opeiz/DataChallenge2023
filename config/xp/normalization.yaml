@@ -42,7 +42,7 @@ xp_overrides_src_n:
     input_da:
       _target_: src.utils.cross_tgt_input
       path: bla
-      domain: gf
+      domain: ${src_domain}
     xrds_kw:
       strides: {lat: 200, lon: 200}
       domain_limits: ${src_domain.train}

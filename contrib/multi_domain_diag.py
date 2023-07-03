@@ -67,7 +67,7 @@ def multi_domain_osse_diag(
 
     norm_dm = src_dm or dm
 
-    lit_mod.norm_stats = norm_dm.norm_stats()
+    lit_mod.norm_stats = train_mean_std(norm_dm)
     # print("========== Mean and STD Lit-mod ======")
     # print(lit_mod.norm_stats)
     # print("========== Mean and STD dm =======")
@@ -174,4 +174,15 @@ def load_miost():
     miost = miost.rename({"latitude":'lat',"longitude":'lon'})
     
     tdat = ssh.assign(rec_ssh=miost.ssh.interp(time=ssh.time, lat=ssh.lat, lon=ssh.lon, method='nearest').where(lambda ds: np.abs(ds) < 10, np.nan))
-    return td
+    return tdat
+
+def train_mean_std(dm):
+
+    lon = slice(-51, -9)
+    lat = slice(32, 54)
+
+    train_data = dm.input_da.sel(lat=lat,lon=lon).sel(dm.domains['train'])
+            
+    (mean_batch, std_batch) = train_data.sel(variable='tgt').pipe(lambda da: (da.mean().values.item(), da.std().values.item()))
+    
+    return (mean_batch, std_batch)

@@ -31,7 +31,6 @@ datamodule:
   input_da: 
     _target_: src.utils.cross_tgt_input
     path: ${paths.natl_gf_5nads}
-    domain: gf
   domains:
     train:
       time: {_target_: builtins.slice, _args_: ['2013-02-24', '2013-09-30']}

@@ -358,16 +358,16 @@ def load_enatl(*args, **kwargs):
     ds = ds.transpose('time', 'lat', 'lon').to_array().load()
     return ds
 
-def cross_tgt_input(path):
+def cross_tgt_input(path,domain):
     natl = src.utils.load_altimetry_data(path='data/natl_gf_w_5nadirs.nc')
     enatl = src.utils.load_enatl()
     
-    # if domain == "gf":
-    lat = slice(32,44)
-    lon = slice(-66,-54)
-    # elif domain == "cNATL":
-    #     lon = slice(-51, -9)
-    #     lat = slice(32, 54)
+    if domain == "gf":
+        lat = slice(32,44)
+        lon = slice(-66,-54)
+    elif domain == "cNATL":
+        lon = slice(-51, -9)
+        lat = slice(32, 54)
 
     cross = natl
     cross.to_dataset(dim='variable').assign(

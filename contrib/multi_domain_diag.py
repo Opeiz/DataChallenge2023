@@ -177,6 +177,6 @@ def load_miost():
 
 def train_mean_std(dm):
             
-    (mean_batch, std_batch) = dm.input_da.pipe(lambda da: (da.mean().values.item(), da.std().values.item()))
+    (mean_batch, std_batch) = dm.input_da.ssh.pipe(lambda da: (da.mean().values.item(), da.std().values.item()))
     
     return (mean_batch, std_batch)

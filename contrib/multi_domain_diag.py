@@ -62,9 +62,6 @@ def multi_domain_osse_diag(
     if rec_weight is not None:
         lit_mod.rec_weight = torch.from_numpy(rec_weight)
 
-    print("===== TEST ====")
-    print(src_dm.input_da)
-
     norm_dm = src_dm or dm
 
     # lit_mod.norm_stats = norm_dm.norm_stats()
@@ -179,10 +176,7 @@ def load_miost():
     return tdat
 
 def train_mean_std(dm):
-
-    train_data = dm.input_da
-    print(train_data)
             
-    (mean_batch, std_batch) = train_data.sel(variable='ssh').pipe(lambda da: (da.mean().values.item(), da.std().values.item()))
+    (mean_batch, std_batch) = dm.input_da.pipe(lambda da: (da.mean().values.item(), da.std().values.item()))
     
     return (mean_batch, std_batch)

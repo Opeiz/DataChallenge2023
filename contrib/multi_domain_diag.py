@@ -181,6 +181,7 @@ def load_miost():
 def train_mean_std(dm):
 
     train_data = dm.input_da
+    print(train_data)
             
     (mean_batch, std_batch) = train_data.sel(variable='ssh').pipe(lambda da: (da.mean().values.item(), da.std().values.item()))
     

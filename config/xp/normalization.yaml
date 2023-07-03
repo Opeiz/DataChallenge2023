@@ -41,7 +41,7 @@ xp_overrides_src_n:
   datamodule:
     input_da:
       _target_: src.utils.cross_tgt_input
-      path: ${paths.natl_gf_5nads}
+      path: bla
       domain: gf
     xrds_kw:
       strides: {lat: 200, lon: 200}

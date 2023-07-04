@@ -374,14 +374,9 @@ def cross_tgt_input(path):
     return cross
 
 def load_cNATL():
-    oi = xr.open_dataset('../sla-data-registry/NATL60/NATL/oi/ssh_NATL60_4nadir.nc')
-    ssh = xr.open_dataset('../sla-data-registry/NATL60/NATL/ref_new/NATL60-CJM165_NATL_ssh_y2013.1y.nc')
-    ssh['time'] = pd.to_datetime('2012-10-01') + pd.to_timedelta(ssh.time, 's') 
-    
-    cNATL = ssh.assign(rec_ssh=oi.ssh_mod.interp(time=ssh.time, lat=ssh.lat, lon=ssh.lon, method='nearest').where(lambda ds: np.abs(ds) < 10, np.nan))
-    
+    full_natl = load_full_natl_data()    
     lon = slice(-51, -9)
     lat = slice(32, 54)
-    cNATL = cNATL.sel(lat=lat,lon=lon)
+    cNATL = full_natl.sel(lat=lat,lon=lon)
 
     return cNATL

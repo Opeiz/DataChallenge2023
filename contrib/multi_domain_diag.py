@@ -177,5 +177,7 @@ def load_miost():
 
 def train_mean_std(dm):
     print(dm)
-    (mean_batch, std_batch) = dm.sel(variable='tgt').pipe(lambda da: (da.mean().values.item(), da.std().values.item()))
-    return (mean_batch, std_batch) 
+    # (mean_batch, std_batch) = dm.sel(variable='tgt').pipe(lambda da: (da.mean().values.item(), da.std().values.item()))
+    (mean_batch, std_batch) = dm.input_da.tgt.pipe(lambda da: (da.mean().values.item(), da.std().values.item()))
+    (mean_batch, std_batch)
+    # return (mean_batch, std_batch) 

@@ -66,21 +66,13 @@ def multi_domain_osse_diag(
 
     lit_mod.norm_stats = norm_dm.norm_stats()
 
-    # lit_mod.norm_stats = train_mean_std(norm_dm)
     print("========== Mean and STD Lit-mod ======")
     print(lit_mod.norm_stats)
-    # print("========== Mean and STD dm =======")
-    # print(dm.norm_stats())
-    # dm._norm_stats = 3
-    # print("========== Mean and STD dm =======")
-    # print(dm.norm_stats(), "\n")
 
     trainer.test(lit_mod, datamodule=dm)
     tdat = lit_mod.test_data
     
     tdat = tdat.assign(rec_ssh=tdat.rec_ssh.where(np.isfinite(tdat.ssh), np.nan)).drop("obs")
-    print("=== tdat ===")
-    print(tdat)
 
     if save_dir is not None:
         save_dir = Path(save_dir)
@@ -104,9 +96,6 @@ def multi_domain_osse_metrics(tdat, test_domains, test_periods):
             test_domain = dict(time=slice(*test_periods[p]), **tdom_spat)
 
             da_rec, da_ref = tdat.sel(test_domain).drop("ssh"), tdat.sel(test_domain).ssh
-            # print("\n=== TEST ====")
-            # print(da_rec,da_ref)
-
 
             leaderboard_rmse = (
                 1.0 - (((da_rec - da_ref) ** 2).mean()) ** 0.5 / (((da_ref) ** 2).mean()) ** 0.5
@@ -174,10 +163,3 @@ def load_miost():
     
     tdat = ssh.assign(rec_ssh=miost.ssh.interp(time=ssh.time, lat=ssh.lat, lon=ssh.lon, method='nearest').where(lambda ds: np.abs(ds) < 10, np.nan))
     return tdat
-
-def train_mean_std(dm):
-    print(dm)
-    # (mean_batch, std_batch) = dm.sel(variable='tgt').pipe(lambda da: (da.mean().values.item(), da.std().values.item()))
-    (mean_batch, std_batch) = dm.input_da.tgt.pipe(lambda da: (da.mean().values.item(), da.std().values.item()))
-    (mean_batch, std_batch)
-    # return (mean_batch, std_batch) 

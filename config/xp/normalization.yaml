@@ -108,7 +108,7 @@ entrypoints:
 
 defaults:
   - /domain: test                  # prediction
-  - /domain@src_domain: gf          # For normalize data
+  - /domain@src_domain: cNATL          # For normalize data
 
   - /domain@test_domains.cNATL: cNATL
   - /domain@test_domains.gf: gf

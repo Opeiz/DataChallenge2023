@@ -43,7 +43,7 @@ domains = {
     "calm":     dict(lon=[-41., -29.],  lat=[32, 44]),
     "qnatl":    dict(lon=[-77., 0.],    lat=[27., 64.]),
     "canaries": dict(lon=[-30, -15],    lat=[32, 47]),
-    "stage":    dict(lon=[-54,-36],     lat=[36,55])
+    "test":     dict(lon=[-71., -9],    lat=[32, 56])
 }
 
 for n, d in domains.items():

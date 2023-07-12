@@ -57,6 +57,8 @@ def multi_domain_osse_diag(
     src_dm=None,
 ):
     ckpt = torch.load(ckpt_path)["state_dict"]
+    print(ckpt)
+
     lit_mod.load_state_dict(ckpt)
 
     if rec_weight is not None:

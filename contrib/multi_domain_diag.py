@@ -69,11 +69,9 @@ def multi_domain_osse_diag(
 
     print("========== Mean and STD Lit-mod ======")
     print(lit_mod.norm_stats)
-    print(lit_mod)
 
     trainer.test(lit_mod, datamodule=dm)
     tdat = lit_mod.test_data
-
 
     # tdat = tdat.assign(rec_ssh=tdat.rec_ssh.where(np.isfinite(tdat.ssh), np.nan)).drop("obs")
 
@@ -82,7 +80,7 @@ def multi_domain_osse_diag(
         save_dir.mkdir(parents=True, exist_ok=True)
     
 
-    tdat.to_netcdf(save_dir / "multi_domain_tdat.nc")
+    # tdat.to_netcdf(save_dir / "multi_domain_tdat.nc")
 
     metrics_df = multi_domain_osse_metrics(tdat, test_domains, test_periods)
     

@@ -57,7 +57,6 @@ def multi_domain_osse_diag(
     src_dm=None,
 ):
     ckpt = torch.load(ckpt_path)["state_dict"]
-    print(ckpt)
 
     lit_mod.load_state_dict(ckpt)
 
@@ -73,7 +72,8 @@ def multi_domain_osse_diag(
 
     trainer.test(lit_mod, datamodule=dm)
     tdat = lit_mod.test_data
-    
+    print(tdat)
+
     # tdat = tdat.assign(rec_ssh=tdat.rec_ssh.where(np.isfinite(tdat.ssh), np.nan)).drop("obs")
 
     if save_dir is not None:

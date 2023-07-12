@@ -104,7 +104,7 @@ entrypoints:
     test_domains: ${test_domains}
     test_periods: ${test_periods}
     save_dir: ${hydra:runtime.output_dir}
-    src_dm: ${src_dm}
+    # src_dm: ${src_dm}
 
 defaults:
   - /domain: test                  # prediction

@@ -69,10 +69,11 @@ def multi_domain_osse_diag(
 
     print("========== Mean and STD Lit-mod ======")
     print(lit_mod.norm_stats)
+    print(lit_mod)
 
     trainer.test(lit_mod, datamodule=dm)
     tdat = lit_mod.test_data
-    print(tdat)
+
 
     # tdat = tdat.assign(rec_ssh=tdat.rec_ssh.where(np.isfinite(tdat.ssh), np.nan)).drop("obs")
 

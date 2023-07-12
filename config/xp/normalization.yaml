@@ -77,7 +77,7 @@ src_dm:
   _target_: contrib.multi_domain_diag.load_cfg_from_xp
   key: datamodule
   xpd : ${xpd}
-  overrides: ${xp_overrides_src_e}  ## NATL o eNATL
+  overrides: ${xp_overrides_src_n}  ## NATL o eNATL
 
 ckpt:
   _target_: src.utils.best_ckpt
@@ -107,8 +107,8 @@ entrypoints:
     src_dm: ${src_dm}
 
 defaults:
-  - /domain: test                  # prediction
-  - /domain@src_domain: gf          # For normalize data
+  - /domain: NATL                  # prediction
+  - /domain@src_domain: cNATL          # For normalize data
 
   - /domain@test_domains.cNATL: cNATL
   - /domain@test_domains.gf: gf

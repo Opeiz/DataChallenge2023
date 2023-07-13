@@ -17,7 +17,7 @@ xp_overrides:
     xrds_kw:
       strides: {lat: 200, lon: 200}
       domain_limits: ${domain.train}
-    dl_kw: {batch_size: 2, num_workers: 1}
+    dl_kw: {batch_size: 4, num_workers: 1}
 
 ## ==== With eNATL Data ====
 # xp_overrides_src:
@@ -42,7 +42,7 @@ xp_overrides_src:
     xrds_kw:
       strides: {lat: 200, lon: 200}
       domain_limits: ${src_domain.train}
-    dl_kw: {batch_size: 2, num_workers: 1}
+    dl_kw: {batch_size: 4, num_workers: 1}
 
 trainer: 
   _target_: pytorch_lightning.Trainer
@@ -71,7 +71,7 @@ src_dm:
 
 ckpt:
   _target_: src.utils.best_ckpt
-  xp_dir: ${xpd}/base
+  xp_dir: ${xpd}/base_test
 
 test_domains: ???
 

@@ -39,8 +39,8 @@ xp_overrides_src_e:
 # ## ==== With NATL Data ====
 xp_overrides_src_n:
   datamodule:
-    input_da:
-      _target_: src.utils.load_full_natl_data
+    # input_da:
+    #   _target_: src.utils.load_full_natl_data
     xrds_kw:
       strides: {lat: 200, lon: 200}
       domain_limits: ${src_domain.train}

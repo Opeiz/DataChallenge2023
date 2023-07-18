@@ -81,7 +81,7 @@ src_dm:
 
 ckpt:
   _target_: src.utils.best_ckpt
-  xp_dir: ${xpd}/base_test
+  xp_dir: ${xpd}/base
 
 test_domains: ???
 

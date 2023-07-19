@@ -372,11 +372,3 @@ def cross_tgt_input(path):
         )
     )   
     return cross
-
-def load_cNATL():
-    full_natl = load_full_natl_data()    
-    lon = slice(-51, -9)
-    lat = slice(32, 54)
-    cNATL = full_natl.sel(lat=lat,lon=lon)
-
-    return cNATL
